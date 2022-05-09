@@ -41,6 +41,7 @@ body {
   line-height: 1.5;
   letter-spacing: .5px;
   font-family: sans-serif;
+  background-color: #EFF7FA;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -272,6 +273,13 @@ img:not([alt]) {
     color: white;
     font-size: .8rem;
     padding: 1em;
+    border: none;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+.search-form button:hover{
+    background: linear-gradient(135deg, #ff822f 0%,#ff393c 100%);
 }
 
 nav{
@@ -302,10 +310,22 @@ nav{
 }
 
 
+.sales{
+    height: 26em;
+    overflow: hidden;
+}
+
+.sales img{
+    height: 100%;
+    margin: 0 auto;
+    background-size: cover;
+}
+
 .categories{
+    max-width: 1200px;
     text-align: center;
     padding: 1em;
-    margin: .5em 0;
+    margin: .5em auto;
 }
 
 .glider img{
@@ -318,6 +338,34 @@ nav{
     pointer-events: all;
     border-radius: 50%;
     margin: 0 1em;
+}
+
+.top-deals{
+    max-width: 1000px;
+    padding: .5em 0;
+}
+
+.top-deals-heading{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-deals-heading .blue-highlight{
+    font-size: .8rem;
+    background-color: #007bff;
+    color: white;
+    padding: .25em .5em;
+}
+
+.top-deals-heading a{
+    font-weight: 500;
+    text-decoration: none;
+    color: #0ca397; 
+    transition: color .15s ease;
+}
+
+.top-deals-heading a:hover{
+    color: #545b62;
 }
 
 @media (max-width: 50em) {
@@ -348,5 +396,8 @@ nav{
     }
     .nav-list > * + * {
         margin-left: unset;
+    }
+    .sales{
+        height: 15em;
     }
 }
