@@ -345,9 +345,14 @@ nav{
     padding: .5em 0;
 }
 
+.top-deals.wrapper{
+    max-width: 1150px;
+}
+
 .top-deals-heading{
     display: flex;
     justify-content: space-between;
+    margin: 0 1em;
 }
 
 .top-deals-heading .blue-highlight{
@@ -367,6 +372,187 @@ nav{
 .top-deals-heading a:hover{
     color: #545b62;
 }
+
+.product-grid{
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    margin: 1em;
+}
+
+.product-grid > *{
+    margin: 0 auto;
+}
+
+.card{
+    padding: .5em;
+    background-color: white;
+    text-align: center;
+}
+
+.top{
+    color: #2bd891;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top .sale-tag{
+    font-size: .9rem;
+    background-color: #2bd8902b;
+    padding: .1em .4em;
+}
+
+.card .img{
+    height: 150px;
+    margin: .5em auto;
+}
+
+.card .img img{
+    background-size: cover;
+}
+
+.card .title{
+    font-weight: bold;
+    color: #128f84;
+}
+
+.card .stock{
+    font-weight: 500;
+}
+
+.card .available{
+    font-size: .8rem;
+    font-weight: 300;
+    color: #888888
+}
+
+.card .price s{
+    font-size: .75rem;
+}
+
+.card .counter{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    margin: .5em auto;
+    padding: .2em .5em;
+    background: linear-gradient(135deg, #ff822f4c  0%, #ff393c3e  100%);
+    border-radius: 20px;
+}
+
+.card .counter > * {
+    background: transparent;
+    border: none;
+    font-size: 1.125rem;
+}
+
+.card .counter input{
+    text-align: center;
+    width: 10ch;
+}
+
+.card .counter button{
+    background-color: white;
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+}
+
+.card .counter button:hover{
+    color: white;
+    background: linear-gradient(135deg, #ff934b 0%,#ff5e62 100%);
+}
+
+.card .add-cart{
+    display: flex;
+    align-items: center;
+    font-size: .85rem;
+    padding: .25em .8em;
+    margin: 0 auto;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ff934b 0%,#ff5e62 100%);;
+}
+
+.card .add-cart img{
+    height: .9rem;
+    margin-right: .5em;
+    filter: invert(180);
+}
+
+
+.posters{
+    margin: 2em auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.services{
+    background-color: white;
+}
+
+.services-content {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #d7d7d7;
+}
+
+.services-content .item{
+    display: flex;
+    align-items: center;
+    margin: .5em;
+}
+
+.services-content .item .img-container{
+    padding: .8em;
+    border:  2px solid #128f84;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.services-content .item .img-container img{
+    margin: auto;
+    width: 30px;
+}
+
+.services-content .item .desc{
+    margin-left: 1em;
+}
+
+.services-content .item .desc .title{
+    font-weight: 600;
+    color: #128f84;
+}
+
+.services-content .item .desc .sub-title{
+    font-size: .8rem;
+    color: rgba(108, 108, 108, 0.8);
+}
+
+
+.about-details{
+    padding: 2em 0;
+    display: grid;
+    grid-template-columns: 300px repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.about-details .item .title{
+    font-size: 1.8rem;
+    margin-bottom: .5em;
+}
+
+.about-details .item .list{
+    font-size: .9rem;
+    color: rgb(139, 139, 139);
+}
+
 
 @media (max-width: 50em) {
     .topbar-content{
@@ -399,5 +585,17 @@ nav{
     }
     .sales{
         height: 15em;
+    }
+    .posters{
+        margin: 1em;
+        grid-template-columns: 1fr;
+    }
+    .services-content {
+        flex-direction: column;
+        align-items: start;
+        margin: 2em 1em;
+    }
+    .about-details{
+        margin: 1em;
     }
 }
