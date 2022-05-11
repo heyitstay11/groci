@@ -1,0 +1,164 @@
+body{
+    background-color: white;
+}
+
+.banner {
+    text-align: center;
+    padding: 1.2em;
+    color: white;
+    background: linear-gradient(135deg, #0cc5b7 0%,#2bd891 100%);
+}
+
+h1{
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: .4em;
+}
+
+.bread-crumbs{
+    font-size: .9rem;
+}
+
+.about-us-content{
+    padding: 3em 0;
+    display: grid;
+    gap: 1.5em;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.about-us-content .description {
+    text-align: left;
+    max-width: 440px;
+    margin: auto 0;
+}
+
+.description h2{
+    font-weight: 500;
+    color: #ff5e62;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1.5em;
+}
+
+.description strong{
+    color: #5e5e5e;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+}
+
+.description p {
+    font-size: .85rem;
+    line-height: 1.5;
+    color: rgb(153, 153, 153);
+    margin-top: .5em;
+    margin-bottom: 1.5em;
+}
+
+.services{
+    padding: 2.5em 0;
+    background-color: rgb(239,247,250);
+}
+
+section {
+    text-align: center;
+}
+
+section > h2{
+    font-weight: 400;
+    font-size: 2.2rem;
+}
+
+section > p{
+    font-size: .82rem;
+    color: rgb(109, 109, 109);
+}
+
+.services-content, .team-content{
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    flex-wrap: wrap;
+    border-bottom: none;
+}
+
+.services-content .item, .team-content .item{
+    width: 30%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.services-content .item h3{
+    color: #37c98c;
+    margin-top: 1em;
+    margin-bottom: .5em;
+}
+
+.services-content .item p{
+    color: rgb(136, 136, 136);
+    line-height: 1.6;
+}
+
+.team h2{
+    margin-top: 1em;
+}
+
+.team-content {
+    padding: 3em 0;
+}
+
+.team-content .item > * {
+    margin: 0 auto; 
+}
+
+.team-content img{
+    border-radius: 50%;
+}
+
+.team-content .desc{
+    color: #5e5e5e;
+    text-align: center;
+    font-size: .85rem;
+    margin: 1.6em auto;
+    line-height: 1.8;
+}
+
+.team-content .name{
+    color: #37c98c;
+}
+
+.team-content .work{
+    color: #5e5e5e;
+    font-size: .75rem;
+}
+
+hr{
+    margin: 0;
+}
+
+footer{
+    background-color: rgb(239,247,250);
+}
+
+@media (max-width: 800px) {
+    .about-us-content{
+        padding: 2.4em;
+    }
+    .about-us-content img{
+        margin: 0 auto;
+    }
+    .services{
+        padding: 2.5em .5em;
+    }    
+    .services-content{
+        flex-direction: column;
+    }
+    .services-content .item, .team-content .item{
+        width: auto;
+    }  
+    .team-content {
+        padding: 3em .5em;
+        flex-direction: column;
+    }
+}

@@ -314,7 +314,7 @@ nav{
     transition: color .21s ease-in, background .2s ease-in;
 }
 
-.nav-list a:hover{
+.nav-list a:hover, .nav-list a:focus, .nav-list a.active{
     color: white;
     background: linear-gradient(135deg, #ff934b 0%,#ff5e62 100%);;
 }
@@ -607,6 +607,7 @@ nav{
         place-items: start;
     }
     .nav-list{
+       visibility: hidden;
        overflow: hidden;
        max-height: 0;
        width: 100%;
@@ -614,6 +615,7 @@ nav{
        transition: max-height .25s ease;
     }
     .nav-list.active{
+        visibility: visible;
         max-height: 999px;
     }
     .nav-list a{
