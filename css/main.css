@@ -245,6 +245,16 @@ img:not([alt]) {
     padding: .1em;
 }
 
+.menu{
+    background-color: white;
+    width: fit-content;
+    justify-self: end;
+    display: none;
+    grid-area: menu;
+    cursor: pointer;
+}
+
+
 .cart::before{
     background-image: url('../imgs/cart.svg');
     background-size: 1em;
@@ -396,7 +406,15 @@ nav{
     justify-content: space-between;
 }
 
+.veg-icon{
+    height: 26px;
+    width: 26px;
+    border: 1px solid rgb(51, 164, 102);
+}
 .top .sale-tag{
+    display: flex;
+    align-items: center;
+    text-align: center;
     font-size: .9rem;
     background-color: #2bd8902b;
     padding: .1em .4em;
@@ -466,6 +484,7 @@ nav{
 }
 
 .card .add-cart{
+    cursor: pointer;
     display: flex;
     align-items: center;
     font-size: .85rem;
@@ -540,19 +559,33 @@ nav{
 .about-details{
     padding: 2em 0;
     display: grid;
+    row-gap: 1em;
     grid-template-columns: 300px repeat(auto-fill, minmax(200px, 1fr));
 }
 
-.about-details .item .title{
-    font-size: 1.8rem;
+.about-details .title{
+    font-size: 1.35rem;
     margin-bottom: .5em;
 }
 
-.about-details .item .list{
+.about-details .list{
     font-size: .9rem;
     color: rgb(139, 139, 139);
 }
 
+.text-blue{
+    color: rgb(53, 118, 183);
+}
+
+.text-green{
+    color: rgb(51, 164, 102);
+}
+
+.copyright{
+    padding: 1em;
+    color: white;
+    background: linear-gradient(135deg, #171b20 1%,#343a40 100%);
+}
 
 @media (max-width: 50em) {
     .topbar-content{
@@ -563,7 +596,7 @@ nav{
         padding-top: .5em;
     }
     .search-bar-content{
-        grid-template-areas: '. brand   cart .'
+        grid-template-areas: '. brand   menu .'
                              '. form form .';
         row-gap: 1em;
     }
@@ -574,8 +607,14 @@ nav{
         place-items: start;
     }
     .nav-list{
+       overflow: hidden;
+       max-height: 0;
        width: 100%;
        flex-direction: column;
+       transition: max-height .25s ease;
+    }
+    .nav-list.active{
+        max-height: 999px;
     }
     .nav-list a{
         width: 100%;
@@ -597,5 +636,19 @@ nav{
     }
     .about-details{
         margin: 1em;
+    }
+    .about-details{
+        grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .cart{
+        display: none;
+    }
+    .menu{
+        height: 50px;
+        display: block;
+        text-align: center;
+    }
+    .menu img{
+        margin: auto;
     }
 }

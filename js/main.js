@@ -8,4 +8,10 @@ window.addEventListener('load', function(){
           next: '.glider-next'
         }
     })
-  })
+});
+
+const menuBtn = document.getElementById('menuBtn');
+
+menuBtn.addEventListener('click', () => {
+  document.querySelector('.nav-list').classList.toggle('active')
+});
