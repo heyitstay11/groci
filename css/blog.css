@@ -1,0 +1,67 @@
+body{
+    background-color: #e8f9ff;
+}
+
+nav{
+    background-color: #fff;
+}
+
+.blog{
+    margin: 2.5em auto;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2.5em;
+}
+
+.blog-sidebar > * + * {
+    margin-top: 1.5em;
+}
+
+.search, .newsletter, .blog-categories{
+    background-color: #fff;
+    padding: 1.4em;
+    display: flex;
+}
+
+.newsletter, .blog-categories{
+    display: block;
+}
+
+ul.category-list{
+    margin-left: 1em;
+    color: rgb(142, 142, 142);
+}
+
+.category-list li {
+    padding: .5em 0;
+}
+
+.category-list > * + * {
+    border-top: 1px solid lightgray;
+}
+
+.newsletter h3, .blog-categories h3{
+    color: rgb(97, 97, 97);
+    padding-bottom: .2em;
+    font-weight: 600;
+}
+
+.input-group{
+    display: flex;
+}
+
+.search input, .input-group input{
+    cursor: pointer;
+    font-size: .9rem;
+    border: 2px solid lightgray;
+    padding: .3em 0 .3em .75em;
+}
+
+.search button, .input-group button{
+    cursor: pointer;
+    font-size: 1rem;
+    border: none;
+    padding: .25em .7em;
+    background: linear-gradient(135deg, #ff934b 0%,#ff5e62 100%);
+    color: #fff;
+}

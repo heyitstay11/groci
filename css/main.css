@@ -302,15 +302,11 @@ nav{
     font-size: .9rem;
 }
 
-.nav-list > * + * {
-    margin-left: 1em;
-}
-
 .nav-list a {
     color: rgb(112, 112, 112);
     display: inline-block;
     text-decoration: none;
-    padding: 1em 1em;
+    padding: 1em 1.25em;
     transition: color .21s ease-in, background .2s ease-in;
 }
 
