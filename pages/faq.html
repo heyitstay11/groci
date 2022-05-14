@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Groci Theme </title>
+    <title>Groci Theme </title>
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="../css/faq.css">
+    <script src="../js/glider.min.js" defer></script>
     <script src="../js/main.js" defer></script>
 </head>
 <body>
@@ -54,11 +55,11 @@
         
         <nav>
             <ul class="nav-list">
-                <li><a href="./index.html">Home</a></li>
+                <li><a href="#!">Home</a></li>
                 <li><a href="./about.html">About Us</a></li>
                 <li><a href="./products.html">Fruit & Vegetables</a></li>
                 <li><a href="#!/shop">Shop </a></li>
-                <li><a href="#!/blog" class="active">Blog </a></li>
+                <li><a href="./blog.html">Blog </a></li>
                 <li><a href="./faq.html">FAQ </a></li>
                 <li><a href="./contact.html">Contact </a></li>
             </ul>
@@ -67,86 +68,98 @@
 
     <main>
 
-    <h1 class="visually-hidden">Blog</h1>
-       
-     <section class="blog wrapper">
+        <div class="banner">
+            <h1>FAQ</h1>
+            <p class="bread-crumbs">Home / Faq</p>
+        </div>
 
-        <ul class="blog-list">
+        <section class="wrapper faq-details">
 
-            <li>
-                <article class="blog-card">
-                    <figure>
-                        <img src="../imgs/sale-img.webp" alt="">
-                    <figcaption>
-                        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing.</h2>
-                        <div class="blog-info">
-                            <span>August 10 2021</span>
-                            <span class="icon-link tag-icon invert">gallery, news, video</span>
+            <div class="accordion-container">
+                <details open="true">
+                    <summary>Where can i buy peanuts?</summary>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut distinctio quidem minus quas, atque sapiente. Incidunt excepturi commodi amet nobis!
+                    </p>
+                </details>
+                <details>
+                    <summary>Which brand sells the best peanuts?</summary>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut distinctio quidem minus quas, atque sapiente. Incidunt excepturi commodi amet nobis!
+                    </p>
+                </details>
+                <details>
+                    <summary>Is peanut healthy?</summary>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut distinctio quidem minus quas, atque sapiente. Incidunt excepturi commodi amet nobis!
+                    </p>
+                </details>
+            </div>
+
+            <div class="faq-form-contact">
+                <form>
+                    <h2>Ask Us A Question</h2>
+                    <div class="input-group">
+                        <label for="name" class="visually-hidden">Your Name</label>
+                        <input type="text" placeholder="Your Name" />
+                        <label for="email" class="visually-hidden">Your Email</label>
+                        <input type="email" placeholder="Your Email">
+                    </div>
+                    <div class="input-group">
+                        <label for="subject" class="visually-hidden">Subject</label>
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="input-group">
+                        <label for="message" class="visually-hidden">Your Mesage</label>
+                        <textarea name="message" placeholder="Your Message" id="" cols="30" rows="8"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <button>Send Message</button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+            <section class="services">
+                <div class="services-content wrapper">
+
+                    <div class="item">
+                        <div class="img-container">
+                            <img src="../imgs/cart.svg" alt="" />
                         </div>
-                        <p class="blog-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus, placeat harum optio 
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus, placeat harum optio 
-                        </p>
-                        <a  href="#!">Read More</a>
-                    </figcaption>
-                    </figure>
-                </article>
-            </li>
+                        <div class="desc">
+                            <p class="title">Great Delas</p>
+                            <p class="sub-title">Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </div>
 
-            <li>
-                <article class="blog-card">
-                    <figure>
-                        <img src="../imgs/sale-img.webp" alt="">
-                        <figcaption>
-                            <h2>Lorem ipsum dolor, sit amet consectetur adipisicing.</h2>
-                            <div class="blog-info">
-                                <span>August 10 2021</span>
-                                <span class="icon-link tag-icon invert">gallery, news, video</span>
-                            </div>
-                            <p class="blog-desc">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus, placeat harum optio 
-                            </p>
-                            <a href="#!">Read More</a>
-                        </figcaption>
-                    </figure>
-                </article>
-            </li>
+                    <div class="item">
+                        <div class="img-container">
+                            <img src="../imgs/cart.svg" alt="" />
+                        </div>
+                        <div class="desc">
+                            <p class="title">Great Delas</p>
+                            <p class="sub-title">Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </div>
 
-        </ul>
+                    <div class="item">
+                        <div class="img-container">
+                            <img src="../imgs/cart.svg" alt="" />
+                        </div>
+                        <div class="desc">
+                            <p class="title">Great Delas</p>
+                            <p class="sub-title">Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </div>
 
-        <aside class="blog-sidebar">
-
-            <div class="search">
-                <label for="search" class="visually-hidden">Search Blog</label>
-                <input id='search' placeholder="Search here" type="text">
-                <button>Search</button>
-            </div>
-
-            <div class="blog-categories">
-                <h3>Categories</h3>
-                <ul class="category-list">
-                    <li>Audio</li> 
-                    <li>Gallery</li> 
-                    <li>Video</li> 
-                    <li>Image</li> 
-                </ul>
-            </div>
-
-            <div class="newsletter">
-                <h3>Newsletter</h3>
-                <div class="input-group">
-                    <label for="email" class="visually-hidden">Your Email Address</label>
-                    <input id='email' placeholder="Your Email " type="text">
-                    <button>Sign Up</button>
                 </div>
-            </div>
-        </aside>
-
-     </section>
+            </section>
 
     </main>
 
-    <hr/>
+
     <footer>
 
         <div class="about-details wrapper">

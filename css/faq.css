@@ -1,0 +1,65 @@
+.faq-details{
+    max-width: 1000px;
+    margin: 2em auto;
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.faq-details > * {
+    background-color: #fff;
+    padding: 2em 1.2em;
+}
+
+details > p{
+    padding: 1em;
+    color: rgb(114, 114, 114);
+}
+
+summary{
+    cursor: pointer;
+    background-color: rgb(232, 232, 232);
+    padding: .35em;
+    padding-left: 1em;
+    font-size: 1.25rem;
+}
+
+details + details{
+    margin-top: .6em;
+}
+
+.faq-form-contact h2{
+    font-size: 1.35rem;
+    margin-bottom: 0.5em;
+}
+
+.faq-form-contact .input-group{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2em;
+}
+
+.faq-form-contact button{
+    border: none;
+    color: white;
+    padding: .5em .8em;
+    background: linear-gradient(45deg, #0cc5b7 0%,#2bd891 100%);
+}
+
+.input-group input, .input-group textarea{
+    flex: 1;
+    padding: .35em 0 .35em .7em;
+}
+
+.input-group + .input-group {
+    margin-top: 1.2em;
+}
+
+
+
+@media (max-width: 800px) {
+    .faq-details{
+        grid-template-columns: 1fr;
+        padding: 0 2em;
+    }
+}

@@ -650,3 +650,20 @@ nav{
         margin: auto;
     }
 }
+
+.banner {
+    text-align: center;
+    padding: 1.2em;
+    color: white;
+    background: linear-gradient(135deg, #0cc5b7 0%,#2bd891 100%);
+}
+
+.banner > h1{
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: .4em;
+}
+
+.bread-crumbs{
+    font-size: .9rem;
+}

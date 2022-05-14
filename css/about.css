@@ -1,7 +1,7 @@
 body{
     background-color: white;
 }
-
+/* 
 .banner {
     text-align: center;
     padding: 1.2em;
@@ -9,7 +9,7 @@ body{
     background: linear-gradient(135deg, #0cc5b7 0%,#2bd891 100%);
 }
 
-h1{
+.banner > h1{
     font-size: 2.5rem;
     font-weight: 400;
     margin-bottom: .4em;
@@ -17,7 +17,7 @@ h1{
 
 .bread-crumbs{
     font-size: .9rem;
-}
+} */
 
 .about-us-content{
     padding: 3em 0;
