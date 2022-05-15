@@ -403,10 +403,16 @@ nav{
 }
 
 .veg-icon{
+    overflow: hidden;
     height: 26px;
     width: 26px;
     border: 1px solid rgb(51, 164, 102);
 }
+
+.veg-icon img{
+    transform: scale(1.8);
+}
+
 .top .sale-tag{
     display: flex;
     align-items: center;

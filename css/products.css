@@ -51,6 +51,7 @@ main {
 }
 
 .price-range{
+    accent-color:  #ff934b;
     -webkit-appearance: none;
     width: 100%;
     height: 8px;
@@ -60,11 +61,12 @@ main {
     outline-color: cyan;
 }
 
-.price-range::-webkit-scrollbar-thumb{
+.price-range::-webkit-slider-thumb{
   -webkit-appearance: none;
-  width: 2.2rem;
-  height: 2.5rem;
-  color: #ff934b;
+  background-color: #ff934b;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 0;
   cursor: pointer;
 }
 

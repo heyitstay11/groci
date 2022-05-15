@@ -4,10 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Groci Theme </title>
+    <title>Login - Groci Theme </title>
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="../css/about.css">
     <script src="../js/main.js" defer></script>
+    <style>
+        .description{
+           height: 85%;
+        }
+        .description h2{
+            margin-bottom: .75em;
+        }     
+        .description form{
+            display: flex;
+            flex-direction: column;
+        }
+        .description input {
+            padding: .25em 0 .25em .5em;
+        }
+        .description label + input {
+            margin-top: .25em;
+        }
+        .description input + label{
+            margin-top: .5em;
+        }
+        .description button {
+            cursor: pointer;
+            margin-top: 1em;
+            border: none;
+            color: white;
+            padding: .65em 1em;
+            background: linear-gradient(45deg, #00d4c2 0%,#3dd495 100%);
+            transition: background .15s ease;
+        }
+        .description button:hover {
+            background: linear-gradient(45deg, #00bcad 0%,#4af4ad 100%);
+        }
+        @media (max-width: 800px) {
+            .description {
+               grid-row: 1 / 2;
+            }
+        }
+    </style>
 </head>
 <body>
     <header role="banner">
@@ -36,7 +74,7 @@
 
         <div class="search-bar">
             <div class="search-bar-content wrapper">
-                <a href="#!" class="brand-img"><img src="../imgs/cart.svg" alt=""></a>
+                <a href="#!" class="brand-img"><img src="../imgs/cart.svg" alt=""> <span class="visually-hidden">Go To Cart</span></a>
             
                 <form class="search-form">
                     <label for="product-search" class="visually-hidden" >Search Products</label>
@@ -58,7 +96,7 @@
                 <li><a href="./about.html">About Us</a></li>
                 <li><a href="./products.html">Fruit & Vegetables</a></li>
                 <li><a href="#!/shop">Shop </a></li>
-                <li><a href="#!" class="active">Blog </a></li>
+                <li><a href="./blog.html">Blog </a></li>
                 <li><a href="./faq.html">FAQ </a></li>
                 <li><a href="./contact.html">Contact </a></li>
             </ul>
@@ -67,86 +105,33 @@
 
     <main>
 
-    <h1 class="visually-hidden">Blog</h1>
-       
-     <section class="blog wrapper">
+        <div class="banner">
+            <h1>Sign In</h1>
+            <p class="bread-crumbs">Home / signin</p>
+        </div>
 
-        <ul class="blog-list">
-
-            <li>
-                <article class="blog-card">
-                    <figure>
-                        <img src="../imgs/sale-img.webp" alt="">
-                    <figcaption>
-                        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing.</h2>
-                        <div class="blog-info">
-                            <span>August 10 2021</span>
-                            <span class="icon-link tag-icon invert">gallery, news, video</span>
-                        </div>
-                        <p class="blog-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus, placeat harum optio 
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus, placeat harum optio 
-                        </p>
-                        <a  href="#!">Read More</a>
-                    </figcaption>
-                    </figure>
-                </article>
-            </li>
-
-            <li>
-                <article class="blog-card">
-                    <figure>
-                        <img src="../imgs/sale-img.webp" alt="">
-                        <figcaption>
-                            <h2>Lorem ipsum dolor, sit amet consectetur adipisicing.</h2>
-                            <div class="blog-info">
-                                <span>August 10 2021</span>
-                                <span class="icon-link tag-icon invert">gallery, news, video</span>
-                            </div>
-                            <p class="blog-desc">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus, placeat harum optio 
-                            </p>
-                            <a href="#!">Read More</a>
-                        </figcaption>
-                    </figure>
-                </article>
-            </li>
-
-        </ul>
-
-        <aside class="blog-sidebar">
-
-            <div class="search">
-                <label for="search" class="visually-hidden">Search Blog</label>
-                <input id='search' placeholder="Search here" type="text">
-                <button>Search</button>
-            </div>
-
-            <div class="blog-categories">
-                <h3>Categories</h3>
-                <ul class="category-list">
-                    <li>Audio</li> 
-                    <li>Gallery</li> 
-                    <li>Video</li> 
-                    <li>Image</li> 
-                </ul>
-            </div>
-
-            <div class="newsletter">
-                <h3>Newsletter</h3>
-                <div class="input-group">
-                    <label for="email" class="visually-hidden">Your Email Address</label>
-                    <input id='email' placeholder="Your Email " type="text">
-                    <button>Sign Up</button>
+        <section class="about-us">
+            <div class="about-us-content wrapper">
+                <img src="../imgs/about-us-1.webp" alt="" height="500" width="480">
+                <div class="description">
+                   <form>
+                       <h2>Login</h2>
+                       <label for="email">Email</label>
+                       <input type="email" id="email" placeholder="Email">
+                       <label for="password">Password</label>
+                       <input type="password" id="password" placeholder="">
+                       <div class="">
+                        <button>Submit</button>
+                       </div>
+                   </form>
                 </div>
             </div>
-        </aside>
-
-     </section>
+        </section>
 
     </main>
 
-    <hr/>
+
+
     <footer>
 
         <div class="about-details wrapper">
