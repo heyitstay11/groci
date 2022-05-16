@@ -147,17 +147,16 @@ footer{
 
 @media (max-width: 800px) {
     .about-us-content{
-        padding: 2em 0;
+        padding: 2em 1em;
+        grid-template-columns: 1fr;
     }
-    .about-us-content img{
-        display: none;
+    .about-us-content > img{
+        height: 320px;
+        margin: auto;
     }
     .about-us-content > .description{
-        max-width: 98vw;
-        margin: 0 auto;
-        place-self: start;
+        margin: 1em auto;
     }
-
     .description h2{
         font-size: 1.6rem;
     }

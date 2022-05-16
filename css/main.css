@@ -655,6 +655,9 @@ nav{
     .menu img{
         margin: auto;
     }
+    .bottom-nav-container{
+        display: block !important;
+    }
 }
 
 .banner {
@@ -672,4 +675,26 @@ nav{
 
 .bread-crumbs{
     font-size: .9rem;
+}
+
+.bottom-nav-container{
+    z-index: 2;
+    --bheight: 50px;
+    display: none;
+    height: var(--bheight);
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top:calc(100% - var(--bheight));
+}
+
+.bottom-nav-container .phone-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.phone-nav img{
+    margin-top: 5px;
+    height: 40px;
 }
