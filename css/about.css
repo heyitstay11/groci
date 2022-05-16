@@ -26,6 +26,10 @@ body{
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 
+.about-us-content > img{
+    max-width: 100%;
+}
+
 .about-us-content .description {
     text-align: left;
     max-width: 440px;
@@ -143,10 +147,19 @@ footer{
 
 @media (max-width: 800px) {
     .about-us-content{
-        padding: 2.4em;
+        padding: 2em 0;
     }
     .about-us-content img{
+        display: none;
+    }
+    .about-us-content > .description{
+        max-width: 98vw;
         margin: 0 auto;
+        place-self: start;
+    }
+
+    .description h2{
+        font-size: 1.6rem;
     }
     .services{
         padding: 2.5em .5em;

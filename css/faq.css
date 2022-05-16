@@ -60,6 +60,6 @@ details + details{
 @media (max-width: 800px) {
     .faq-details{
         grid-template-columns: 1fr;
-        padding: 0 2em;
+        padding: 0 1em;
     }
 }

@@ -2,6 +2,12 @@ main {
     padding: 2em;
 }
 
+@media (max-width: 800px) {
+    main{
+        padding: 2em 1em;
+    }
+}
+
 .product-container{
     display: grid;
     grid-template-columns: 260px 1fr;

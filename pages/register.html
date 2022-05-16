@@ -56,13 +56,14 @@
                 </span>
                 
                 <span class="account-links">
-                    <label for="location" class="eye-svg icon-link">Your Location
-                        <select class="visually-hidden" name="location" id="location">
+                    <span class="eye-svg icon-link">
+                        <label for="location">Your Location</label>
+                        <select  name="location" class="visually-hidden" id="location">
                             <option value="Mumbai">Mumbai</option>
                             <option value="Delhi">Delhi</option>
                             <option value="Kolkata">Kolkata</option>
-                        </select>
-                    </label>
+                        </select>      
+                    </span>
                     <a href="./register.html" class="lock-svg icon-link" >Sign Up</a>
                     <a href="./login.html" class="avatar-svg icon-link" >Sign In</a>
                 </span>
@@ -114,13 +115,13 @@
                    <form>
                        <h2>Register</h2>
                        <label for="username">Username</label>
-                       <input type="text" id="username" placeholder="Enter your name">
+                       <input type="text" id="username" placeholder="Enter your name" autocomplete="username">
                        <label for="email">Email</label>
-                       <input type="email" id="email" placeholder="Email">
+                       <input type="email" id="email" placeholder="Email" autocomplete="email">
                        <label for="password">Password</label>
-                       <input type="password" id="password" placeholder="">
+                       <input type="password" id="password" placeholder="Password"  autocomplete="new-password">
                        <label for="confirm-password">Confirm Password</label>
-                       <input type="password" id="confirm-password">
+                       <input type="password" id="confirm-password" placeholder="Re-enter Password" autocomplete="new-password">
                        <div class="">
                         <button>Submit</button>
                        </div>
