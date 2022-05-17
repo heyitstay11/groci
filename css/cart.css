@@ -48,15 +48,27 @@
     background-color: #fff;
     padding: 1em;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
 }
 
+.total button{
+    margin: 0 auto;
+}
+
 @media (max-width: 800px) {
     .cart-list > li {
+        padding: 1em;
         flex-direction: column;
         max-width: 92vw;
         margin: 10px auto;
+    }
+    li h2{
+        text-align: center;
+    }
+    li > * + * {
+        margin-top: 1em;
     }
 
 
