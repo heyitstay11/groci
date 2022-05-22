@@ -14,15 +14,16 @@ router.get('/:id', async (req, res) => {
 // create product
 router.post('/create', async (req, res) => {
     try {
-        const { title, desc, sale, price, img } = req.body;
-        let product = Product.findOne({ title });
-        
+        const { title, desc, sale, price, img, quantity, measurement_name : m_name, measurement_desc: m_desc } = req.body;
+        let product = await Product.findOne({ title });
+        console.log(product);
         if(product){
             return res.status(400).json({ error: "Product with this name already exists"})
         }
 
-        product = Product.create({ title, desc, sale, price, img });
+        product = await Product.create({ title, desc, sale, price, img, quantity, measurement: { name: m_name, desc: m_desc }});
 
+        console.log(product);
         res.json(product._id);
     }catch (error) { 
         res.status(500).json({ error })

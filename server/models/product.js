@@ -23,6 +23,19 @@ const ProductSchema = new mongoose.Schema({
         type: Number, 
         min: 0,
         max: 100,
+    },
+    quantity: {
+        type: Number,
+        min: 0,
+    },
+    measurement: {
+        name: {
+            type: String,
+            default: 'kg'
+        },
+        desc: {
+            type: String
+        }
     }
 }, { timestamps: true });
 
