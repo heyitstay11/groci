@@ -1,4 +1,4 @@
-main {
+.product-main {
     padding: 2em;
 }
 
@@ -14,7 +14,6 @@ main {
 }
 
 .product-controls .filter, .product-controls .status{
-    accent-color: orange;
     background-color: white;
     padding: .5em 1em;
 }
@@ -31,6 +30,8 @@ main {
 }
 
 .status > input[type='checkbox']{
+   accent-color: orange;
+    color: white;
    margin-top: .5em; 
 }
 

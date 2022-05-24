@@ -1,0 +1,33 @@
+.description h2{
+    margin-bottom: .75em;
+}     
+.description form{
+    display: flex;
+    flex-direction: column;
+}
+.description input {
+    padding: .25em 0 .25em .5em;
+}
+.description label + input {
+    margin-top: .25em;
+}
+.description input + label{
+    margin-top: .5em;
+}
+.description button {
+    cursor: pointer;
+    margin-top: 1em;
+    border: none;
+    color: white;
+    padding: .65em 1em;
+    background: linear-gradient(45deg, #00d4c2 0%,#3dd495 100%);
+    transition: background .15s ease;
+}
+.description button:hover {
+    background: linear-gradient(45deg, #00bcad 0%,#4af4ad 100%);
+}
+@media (max-width: 800px) {
+    .description {
+       grid-row: 1 / 2;
+    }
+}
