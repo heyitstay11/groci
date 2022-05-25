@@ -1,0 +1,18 @@
+.add-product{
+    padding-top: 1em;
+}
+
+.add-product form{
+    text-align: left;
+    width: 600px;
+    max-width: 94vw;
+    margin: auto;
+}
+
+.add-product h2{
+    margin-bottom: .5em;
+}
+
+.add-product input:not(:last-of-type){
+    margin-bottom: .2em;
+}

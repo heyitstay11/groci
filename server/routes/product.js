@@ -18,7 +18,7 @@ router.post('/create', async (req, res) => {
         let product = await Product.findOne({ title });
         
         if(product){
-            return res.status(400).json({ error: "Product with this name already exists"})
+            return res.status(400).json({ error: "Product with this name already exists "})
         }
 
         product = await Product.create({ title, desc, sale, price, img, quantity, measurement: { name: m_name, desc: m_desc }});
