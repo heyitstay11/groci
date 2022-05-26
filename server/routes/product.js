@@ -4,7 +4,12 @@ import Product from '../models/product.js';
 
 // get all products
 router.get('/', async (req, res) => {
-    res.send('Products');
+    try {
+        const products = await Product.find();
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
 });
 
 // get product by id
@@ -23,7 +28,7 @@ router.post('/create', async (req, res) => {
 
         product = await Product.create({ title, desc, sale, price, img, quantity, measurement: { name: m_name, desc: m_desc }});
 
-        res.json(product._id);
+        res.json({ id: product._id});
     }catch (error) { 
         res.status(500).json({ error })
     }

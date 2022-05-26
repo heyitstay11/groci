@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from '../redux/services/authSlice'
 
 const Navbar = () => {
     const [isNavOpen, setNavOpen] = useState(false);
     const [locationSelect, setLocationSelect] = useState(true);
-
+    const { token } = useSelector((state) => ({...state.auth}));
+    const dispatch = useDispatch();
+    
+    const handleLogout = () => {
+        dispatch(logoutUser());
+    }
     return (
         <header role="banner">
         
@@ -25,8 +32,13 @@ const Navbar = () => {
                             <option value="Kolkata">Kolkata</option>
                         </select>      
                     </span>
-                    <Link to="/register" className="lock-svg icon-link" >Sign Up</Link>
-                    <Link to="./login" className="avatar-svg icon-link" >Sign In</Link>
+                    {token ? 
+                     <button onClick={handleLogout} style={{ cursor: 'pointer', background: 'transparent', color: 'white', border: 'none'}} className="lock-svg icon-link" >Log Out</button>
+                    :
+                    <>
+                        <Link to="/register" className="lock-svg icon-link" >Sign Up</Link>
+                        <Link to="/login" className="avatar-svg icon-link" >Sign In</Link>
+                    </>}
                 </span>
             </div>
     </div>  

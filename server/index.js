@@ -5,7 +5,7 @@ dotenv.config()
 import connectDB from './middlewares/connectDB.js';
 import authRouter from './routes/auth.js';
 import productRouter from './routes/product.js';
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 connectDB();
@@ -19,6 +19,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', authRouter);
-app.use('/product', productRouter);
+app.use('/products', productRouter);
 
 app.listen(PORT, () => console.log(`Server started at http://localhost:${PORT}`));

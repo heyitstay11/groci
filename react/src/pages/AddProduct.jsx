@@ -1,11 +1,16 @@
 import '../css/addproduct.css';
 import { useForm } from 'react-hook-form';
+import { useAddProductMutation } from '../redux/services/productApi';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [addProduct] = useAddProductMutation();
     
     const onSubmit = (data) => {
-        console.log(data);
+        addProduct(data)
+        .then(res => console.log(res))
+        .then(data => console.log(data))
+        .catch(data => console.log(data));
     }
 
     return (
@@ -33,7 +38,7 @@ const AddProduct = () => {
                        <input {...register('quantity', { required: true, min: 0 })} type="number" min={0} id="p_quantity" placeholder="100" />
                        <label htmlFor="p_sale">Sale (percent)</label>
                        <input {...register('sale', { required: true, min: 0 })} type="number" min={0} max={100} id="p_sale" placeholder="10" />
-                       <label htmlFor="p_mname">Measurement</label>
+                       <label htmlFor="p_mname">Measurement (default kg)</label>
                        <input {...register('m_name')} type="text" min={0} id="p_mname" placeholder="kg, ml, litre, dozen" />
                        <label htmlFor="p_mdesc">Measurement Description (optional)</label>
                        <input {...register('m_desc')} type="text" min={0} id="p_mdesc" placeholder="a dozen contains 12 pieces" />

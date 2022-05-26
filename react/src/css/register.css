@@ -26,8 +26,16 @@
 .description button:hover {
     background: linear-gradient(45deg, #00bcad 0%,#4af4ad 100%);
 }
+
+.login-sp .login-desc{
+    margin-top: 2.5em;
+}
+
 @media (max-width: 800px) {
     .description {
        grid-row: 1 / 2;
+    }
+    .login-sp .login-desc{
+        margin-top: auto;
     }
 }

@@ -13,7 +13,7 @@ return (
             <div class="filter">
 
                 <p>Filter By Price</p>
-                <input class="price-range" step="1" type="range" name="price" id="" value="0" min="0" max="100"/>
+                <input class="price-range" step="1" type="range" name="price" id="" min="0" max="100"/>
                 <div class="btn-container">
                     <button>Filter</button>
                     <span>Price $0 - $40</span>

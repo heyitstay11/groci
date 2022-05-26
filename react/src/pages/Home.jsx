@@ -1,61 +1,14 @@
+// import { useProductsQuery } from "../redux/services/productApi";
+
 const Home = () => {
+    // const { data } = useProductsQuery();
+
     return (
         <main>
 
         <section className="sales">
             <img src="../imgs/sale-img.webp" alt=""/>
         </section>
-
-        {/* <section className="categories">
-            <div className="glider-contain">
-                <div className="glider cats">
-                    <figure>
-                        <img src="../imgs/avatar.svg" height="50" alt=""/>
-                        <figcaption>Fruits</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="../imgs/avatar.svg"  height="50" alt=""/>
-                        <figcaption>Vegetables</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="../imgs/avatar.svg" height="50"  alt=""/>
-                        <figcaption>Dairy</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="../imgs/avatar.svg"  height="50" alt=""/>
-                        <figcaption>Meat</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="../imgs/avatar.svg" height="50"  alt=""/>
-                        <figcaption>Ready to eat</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="../imgs/avatar.svg" height="50" alt=""/>
-                        <figcaption>Fruits</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="../imgs/avatar.svg"  height="50" alt=""/>
-                        <figcaption>Vegetables</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="../imgs/avatar.svg" height="50"  alt=""/>
-                        <figcaption>Dairy</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="../imgs/avatar.svg"  height="50" alt=""/>
-                        <figcaption>Meat</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="../imgs/avatar.svg" height="50"  alt=""/>
-                        <figcaption>Ready to eat</figcaption>
-                    </figure>
-                </div>
-
-                <button aria-label="Previous" className="glider-prev"><img src="../imgs/prev.svg" height="40" alt=""></button>
-                <button aria-label="Next" className="glider-next"><img src="../imgs/next.svg" height="40" alt=""></button>
-                <div role="tablist" className="dots"></div>
-            </div>
-        </section> */}
 
         <section className="top-deals wrapper">
 
