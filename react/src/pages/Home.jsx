@@ -1,9 +1,6 @@
-// import { useProductsQuery } from "../redux/services/productApi";
 import Card from '../components/Card';
 
 const Home = () => {
-    // const { data } = useProductsQuery();
-
     return (
         <main>
 

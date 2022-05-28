@@ -1,7 +1,10 @@
 import '../css/products.css'
+import { useProductsQuery } from "../redux/services/productApi";
 import Card from '../components/Card';
 
 const Products = () => {
+    const { data, isLoading, error } = useProductsQuery();
+
 return (
     <main className='product-main'>
 
@@ -58,14 +61,15 @@ return (
 
             </div>
 
-
             <div className="product-grid">
-                {[1,2,3,4,5,6,7,8,9].map(item => {
-                    return (
-                        <Card key={item} />
-                    )
+                {isLoading ? (<h2>Loading, please wait ...</h2>):
+                data?.map(item => {
+                    const {sale, img, _id, title, quantity, price } = item;
+
+                    return <Card key={_id} {...{sale, img, _id, title, quantity, price }} />
                 })}
             </div>
+    
         </div>
 
 
