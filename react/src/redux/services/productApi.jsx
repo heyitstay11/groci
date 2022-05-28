@@ -14,13 +14,13 @@ export const productApi = createApi({
             providesTags: ['Product']
         }),
         addProduct: builder.mutation({
-            query: (product) => ({
+            query: ({ product, token }) => ({
                 url: '/products/create',
                 method: 'POST',
                 body: product,
-                // headers: {
-                //     'x-auth-token': 'anann'
-                // }
+                headers: {
+                    'x-auth-token': token
+                }
             }),
             invalidatesTags: ['Product']
         }),

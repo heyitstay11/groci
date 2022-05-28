@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 import Product from '../models/product.js';
+import { requireAuth } from '../middlewares/jwt.js';
 
 // get all products
 router.get('/', async (req, res) => {
@@ -17,7 +18,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create product
-router.post('/create', async (req, res) => {
+router.post('/create', requireAuth , async (req, res) => {
     try {
         const { title, desc, sale, price, img, quantity, measurement_name : m_name, measurement_desc: m_desc } = req.body;
         let product = await Product.findOne({ title });

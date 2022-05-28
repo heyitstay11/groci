@@ -18,6 +18,8 @@ const Register = () => {
         .then(data => {
             if(data.token){
                 navigate('/login');
+            }else{
+                console.log(data);
             }
         })
         .catch(err => console.log(err));

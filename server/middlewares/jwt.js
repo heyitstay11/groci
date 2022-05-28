@@ -19,7 +19,7 @@ const requireAuth = async (req, res, next) => {
         req.user = decodedToken;
         next();
     } catch (error) {
-        res.status(401).json({msg: "Invalid Token"});
+        res.status(401).json({ msg: "Invalid Token" });
     }
 }
 

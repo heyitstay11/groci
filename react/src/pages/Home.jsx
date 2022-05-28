@@ -1,4 +1,5 @@
 // import { useProductsQuery } from "../redux/services/productApi";
+import Card from '../components/Card';
 
 const Home = () => {
     // const { data } = useProductsQuery();
@@ -18,159 +19,11 @@ const Home = () => {
         </div>
 
         <div className="product-grid">
-
-            <div className="card">
-                <div className="top">
-                    <span className="sale-tag">17%</span>
-                    <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                </div>
-                <div className="img">
-                    <img src="../imgs/sale-img.webp"  alt=""/>
-                </div>
-                <div className="title">Organic Sweet Corn</div>
-                <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                <div className="counter">
-                    <button className="decrement">-</button>
-                    <input value="1" type="number"/>
-                    <button className="increment">+</button>
-                </div>
-                <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-            </div>
-
-            <div className="card">
-                <div className="top">
-                    <span className="sale-tag">17%</span>
-                    <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                </div>
-                <div className="img">
-                    <img src="../imgs/sale-img.webp"  alt=""/>
-                </div>
-                <div className="title">Organic Sweet Corn</div>
-                <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                <div className="counter">
-                    <button className="decrement">-</button>
-                    <input value="1" type="number"/>
-                    <button className="increment">+</button>
-                </div>
-                <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-            </div>
-
-            <div className="card">
-                <div className="top">
-                    <span className="sale-tag">17%</span>
-                    <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                </div>
-                <div className="img">
-                    <img src="../imgs/sale-img.webp"  alt=""/>
-                </div>
-                <div className="title">Organic Sweet Corn</div>
-                <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                <div className="counter">
-                    <button className="decrement">-</button>
-                    <input value="1" type="number"/>
-                    <button className="increment">+</button>
-                </div>
-                <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-            </div>
-
-            <div className="card">
-                <div className="top">
-                    <span className="sale-tag">17%</span>
-                    <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                </div>
-                <div className="img">
-                    <img src="../imgs/sale-img.webp"  alt=""/>
-                </div>
-                <div className="title">Organic Sweet Corn</div>
-                <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                <div className="counter">
-                    <button className="decrement">-</button>
-                    <input type="number" value="1" />
-                    <button className="increment">+</button>
-                </div>
-                <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-            </div>
-
-            <div className="card">
-                <div className="top">
-                    <span className="sale-tag">17%</span>
-                    <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                </div>
-                <div className="img">
-                    <img src="../imgs/sale-img.webp"  alt=""/>
-                </div>
-                <div className="title">Organic Sweet Corn</div>
-                <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                <div className="counter">
-                    <button className="decrement">-</button>
-                    <input value="1" type="number"/>
-                    <button className="increment">+</button>
-                </div>
-                <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-            </div>
-
-            <div className="card">
-                <div className="top">
-                    <span className="sale-tag">17%</span>
-                    <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                </div>
-                <div className="img">
-                    <img src="../imgs/sale-img.webp"  alt=""/>
-                </div>
-                <div className="title">Organic Sweet Corn</div>
-                <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                <div className="counter">
-                    <button className="decrement">-</button>
-                    <input value="1" type="number"/>
-                    <button className="increment">+</button>
-                </div>
-                <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-            </div>
-
-            <div className="card">
-                <div className="top">
-                    <span className="sale-tag">17%</span>
-                    <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                </div>
-                <div className="img">
-                    <img src="../imgs/sale-img.webp"  alt=""/>
-                </div>
-                <div className="title">Organic Sweet Corn</div>
-                <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                <div className="counter">
-                    <button className="decrement">-</button>
-                    <input value="1" type="number"/>
-                    <button className="increment">+</button>
-                </div>
-                <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-            </div>
-
-            <div className="card">
-                <div className="top">
-                    <span className="sale-tag">17%</span>
-                    <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                </div>
-                <div className="img">
-                    <img src="../imgs/sale-img.webp"  alt=""/>
-                </div>
-                <div className="title">Organic Sweet Corn</div>
-                <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                <div className="counter">
-                    <button className="decrement">-</button>
-                    <input type="number" value="1" />
-                    <button className="increment">+</button>
-                </div>
-                <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-            </div>
-
+            {[1,2,3,4,5,6,7,8].map(item => {
+               return (
+                   <Card key={item}/>
+               )
+            })}
         </div>
 
         </section>
@@ -188,82 +41,11 @@ const Home = () => {
             </div>
     
             <div className="product-grid">
-    
-                <div className="card">
-                    <div className="top">
-                        <span className="sale-tag">17%</span>
-                        <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                    </div>
-                    <div className="img">
-                        <img src="../imgs/sale-img.webp"  alt=""/>
-                    </div>
-                    <div className="title">Organic Sweet Corn</div>
-                    <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                    <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                    <div className="counter">
-                        <button className="decrement">-</button>
-                        <input value="1" type="number"/>
-                        <button className="increment">+</button>
-                    </div>
-                    <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-                </div>
-    
-                <div className="card">
-                    <div className="top">
-                        <span className="sale-tag">17%</span>
-                        <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                    </div>
-                    <div className="img">
-                        <img src="../imgs/sale-img.webp"  alt=""/>
-                    </div>
-                    <div className="title">Organic Sweet Corn</div>
-                    <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                    <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                    <div className="counter">
-                        <button className="decrement">-</button>
-                        <input value="1" type="number"/>
-                        <button className="increment">+</button>
-                    </div>
-                    <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-                </div>
-                
-                <div className="card">
-                    <div className="top">
-                        <span className="sale-tag">17%</span>
-                        <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                    </div>
-                    <div className="img">
-                        <img src="../imgs/sale-img.webp"  alt=""/>
-                    </div>
-                    <div className="title">Organic Sweet Corn</div>
-                    <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                    <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                    <div className="counter">
-                        <button className="decrement">-</button>
-                        <input value="1" type="number"/>
-                        <button className="increment">+</button>
-                    </div>
-                    <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-                </div>
-
-                <div className="card">
-                    <div className="top">
-                        <span className="sale-tag">17%</span>
-                        <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
-                    </div>
-                    <div className="img">
-                        <img src="../imgs/sale-img.webp"  alt=""/>
-                    </div>
-                    <div className="title">Organic Sweet Corn</div>
-                    <div className="stock"> <span className="tick-icon">/</span>In Stock <span className="available">1kg</span></div>
-                    <div className="price"><s>$18.00</s> <strong>$14.00</strong></div>
-                    <div className="counter">
-                        <button className="decrement">-</button>
-                        <input value="1" type="number"/>
-                        <button className="increment">+</button>
-                    </div>
-                    <button className="add-cart"> <img src="../imgs/cart.svg" alt=""/> Add to cart</button>
-                </div>
+                {[11,21,31,41].map(item => {
+                return (
+                    <Card key={item}/>
+                )
+                })}
             </div>
 
             </section>

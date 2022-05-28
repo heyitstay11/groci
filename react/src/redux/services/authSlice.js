@@ -13,6 +13,7 @@ export const authSlice = createSlice({
             state.token = action.payload.token
         },
         logoutUser: (state, action) => {
+            window.localStorage.removeItem('groc_wdp_user');
             state.user = '';
             state.token = '';
         }

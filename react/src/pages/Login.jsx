@@ -22,6 +22,8 @@ const Login = () => {
             if(data.token){
                 dispatch(setLogin(data));
                 navigate('/');
+            }else{
+                console.log(data);
             }
         })
         .catch(err => console.log(err));

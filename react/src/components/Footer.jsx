@@ -1,6 +1,9 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
     return (
     <>
+    <hr/>
      <footer>
 
     <div className="about-details wrapper">
@@ -61,18 +64,10 @@ const Footer = () => {
 
     <div className="bottom-nav-container">
     <ul className="phone-nav">
-        <li>
-            <a href="./index.html"><img src="../imgs/cart.svg" alt=""/></a>
-        </li>
-        <li>
-            <a href="./products.html"><img src="../imgs/cart.svg" alt=""/></a>
-        </li>
-        <li>
-            <a href="./blog.html"><img src="../imgs/cart.svg" alt=""/></a>
-        </li>
-        <li>
-            <a href="./contact.html"><img src="../imgs/cart.svg" alt=""/></a>
-        </li>
+        <li><Link to="/"><img src="../imgs/home.svg" alt=""/></Link></li>
+        <li><Link to="/products"><img src="../imgs/menu.svg" alt=""/></Link></li>
+        <li><Link to="/blog"><img src="../imgs/cart.svg" alt=""/></Link></li>
+        <li><Link to="/contact"><img className="invert-icon" src="../imgs/avatar.svg" alt=""/></Link></li>
     </ul>
     </div>
     </>

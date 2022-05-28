@@ -710,5 +710,16 @@ nav{
 
 .phone-nav img{
     margin-top: 5px;
-    height: 40px;
+    height: 35px;
+}
+
+.invert-icon{
+    filter: invert(100%);
+}
+
+.tick-icon{
+    fill: #2bd891;
+    display: inline-block;
+    height: .9rem;
+    margin-inline-end: .2em;
 }
