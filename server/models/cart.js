@@ -8,16 +8,19 @@ const ProductSchema = new mongoose.Schema({
         unique: true
     },
     products: {
-        type: Array
+        type: Array,
+        default: []
     },
     total_price: {
         type: Number,
         required: true,
+        default: 0,
         min: 0
     },
     total_quantity: {
         type: Number,
         required: true,
+        default: 0,
         min: 0
     }
 }, { timestamps: true });

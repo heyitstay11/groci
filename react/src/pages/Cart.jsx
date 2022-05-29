@@ -2,14 +2,27 @@ import '../css/cart.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { reset } from '../redux/services/cartSlice';
 import CartItem from '../components/CartItem';
+import { useDeleteCartMutation, useUpdateCartMutation } from '../redux/services/cartApi';
+import { useEffect } from 'react';
 
 const Cart = () => {
     const dispatch = useDispatch();
-    const { products, total_price } = useSelector((state) => ({...state.cart}));
+    const { products, total_price, quantity } = useSelector((state) => ({...state.cart}));
+    const { token } = useSelector((state) => ({...state.auth}));
+    const [updateCart] = useUpdateCartMutation();
+    const [deleteCart] = useDeleteCartMutation();
 
     const handleEmptyCart = () => {
         dispatch(reset());
+        deleteCart()
+        .then(data => window.location.reload());
     }
+
+    useEffect(() => {
+        if(token){
+            updateCart({ token, cart: { products, total_price, quantity } });
+        }
+    }, [products]);
 
     return (
         <main>

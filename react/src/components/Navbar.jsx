@@ -2,17 +2,31 @@ import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../redux/services/authSlice'
+import { useEffect } from "react";
+import { useCartQuery, useCreateCartMutation } from "../redux/services/cartApi";
+import { setCart } from "../redux/services/cartSlice";
 
 const Navbar = () => {
     const [isNavOpen, setNavOpen] = useState(false);
     const [locationSelect, setLocationSelect] = useState(true);
     const { token } = useSelector((state) => ({...state.auth}));
-    const { quantity } = useSelector((state) => ({...state.cart}))
+    const { quantity } = useSelector((state) => ({...state.cart}));
+    const { data: cartData } = useCartQuery(token);
+    const [createCart] = useCreateCartMutation();
     const dispatch = useDispatch();
     
     const handleLogout = () => {
         dispatch(logoutUser());
     }
+
+    useEffect(() => {
+        if(!cartData && !token){
+            createCart({token}).then(data => console.log(data));
+        }else{
+            setCart(cartData);
+        }
+    }, [cartData]);
+
     return (
         <header role="banner">
         
@@ -54,7 +68,7 @@ const Navbar = () => {
                     <button type="submit">Search</button>
                 </form>
     
-                <a href="#!" className="cart icon-link"> <span className="cart-items">{quantity}</span> My Cart</a>
+                <Link to="/cart" className="cart icon-link"> <span className="cart-items">{quantity}</span> My Cart</Link>
                  <button className="menu add-cart" id="menuBtn" onClick={() => setNavOpen(prev => !prev)}>
                      <img src="../imgs/menu.svg" alt="" />
                      <span className="visually-hidden">Menu</span>

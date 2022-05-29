@@ -1,6 +1,10 @@
 import { Router } from 'express';
 const router = Router();
 import Cart from '../models/cart.js'
+import { requireAuth } from '../middlewares/jwt.js';
+
+
+router.use(requireAuth);
 
 // get cart by user id
 router.get('/', async (req, res) => {
@@ -15,7 +19,6 @@ router.get('/', async (req, res) => {
 
 // create cart
 router.post('/create', async (req, res) => {
-    const { products, total_price, total_quantity } = req.body;
     const { id } = req.user;
     try {
        let cart = await Cart.findOne({ customer: id });
@@ -24,7 +27,7 @@ router.post('/create', async (req, res) => {
            return res.status(400).json({ error: "A cart with this account already exists"});
        }
 
-       cart = await Cart.create({ customer: id , products, total_price, total_quantity });
+       cart = await Cart.create({ customer: id });
 
        res.json(cart);
     }catch (error) {  
@@ -32,10 +35,10 @@ router.post('/create', async (req, res) => {
     }
 });
 
-// edit cart
+// update cart
 router.put('/', async (req, res) => {
     const { id } = req.user;
-    const { products, total_price, total_quantity } = req.body;
+    const { products, total_price, quantity } = req.body;
     try {
         let cart = await Cart.findOne({ customer: id });
 
@@ -44,10 +47,10 @@ router.put('/', async (req, res) => {
         }
 
         cart = await Cart.findByIdAndUpdate(cart._id, 
-            { customer: id , products, total_price, total_quantity },
+            { customer: id , products, total_price, total_quantity: quantity },
             { new: true });
 
-        res.json(cart);
+        res.json(cart._id);
     } catch (error) {
         res.status(500).json({ error });
     }

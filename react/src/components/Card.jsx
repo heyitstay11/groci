@@ -4,8 +4,8 @@ import { addProduct } from '../redux/services/cartSlice';
 
 const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 1, price = 1 }) => {
     const dispatch = useDispatch();
-    const [count, setCount] = useState(1); 
-    const salePrice =  price - Number((price * (sale / 100)).toFixed(2))
+    const [count, setCount] = useState(1);
+    const salePrice =  price - Number((price * (sale / 100)).toFixed(2));
 
     const handleChange = (e) => setCount(e.target.value)
     const increment = () => setCount(prev => (+prev) + 1);
