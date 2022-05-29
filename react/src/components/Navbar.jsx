@@ -7,6 +7,7 @@ const Navbar = () => {
     const [isNavOpen, setNavOpen] = useState(false);
     const [locationSelect, setLocationSelect] = useState(true);
     const { token } = useSelector((state) => ({...state.auth}));
+    const { quantity } = useSelector((state) => ({...state.cart}))
     const dispatch = useDispatch();
     
     const handleLogout = () => {
@@ -33,7 +34,7 @@ const Navbar = () => {
                         </select>      
                     </span>
                     {token ? 
-                     <button onClick={handleLogout} style={{ cursor: 'pointer', background: 'transparent', color: 'white', border: 'none'}} className="lock-svg icon-link" >Log Out</button>
+                     <button tabIndex={0} onClick={handleLogout} style={{ cursor: 'pointer', background: 'transparent', color: 'white', border: 'none'}} className="lock-svg icon-link" >Log Out</button>
                     :
                     <>
                         <Link to="/register" className="lock-svg icon-link" >Sign Up</Link>
@@ -53,7 +54,7 @@ const Navbar = () => {
                     <button type="submit">Search</button>
                 </form>
     
-                <a href="#!" className="cart icon-link">My Cart</a>
+                <a href="#!" className="cart icon-link"> <span className="cart-items">{quantity}</span> My Cart</a>
                  <button className="menu add-cart" id="menuBtn" onClick={() => setNavOpen(prev => !prev)}>
                      <img src="../imgs/menu.svg" alt="" />
                      <span className="visually-hidden">Menu</span>
@@ -65,8 +66,8 @@ const Navbar = () => {
             <ul className={`nav-list ${isNavOpen ? 'active': ''} `}>
                 <li><NavLink to='/'  className={({ isActive }) => isActive ? 'active' : ''} >Home</NavLink></li>
                 <li><NavLink to='/about' className={({ isActive }) => isActive ? 'active' : ''}>About Us</NavLink></li>
-                <li><NavLink to='/products' className={({ isActive }) => isActive ? 'active' : ''}>Fruit & Vegetables</NavLink></li>
-                <li><NavLink to='/shop' className={({ isActive }) => isActive ? 'active' : ''}>Shop </NavLink></li>
+                <li><NavLink to='/products' className={({ isActive }) => isActive ? 'active' : ''}>Shop </NavLink></li>
+                <li><NavLink to='/cart' className={({ isActive }) => isActive ? 'active' : ''}>Cart</NavLink></li>
                 <li><NavLink to='/blog' className={({ isActive }) => isActive ? 'active' : ''}>Blog </NavLink></li>
                 <li><NavLink to='/faq' className={({ isActive }) => isActive ? 'active' : ''}>FAQ </NavLink></li>
                 <li><NavLink to='/contact' className={({ isActive }) => isActive ? 'active' : ''}>Contact </NavLink></li>

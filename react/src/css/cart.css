@@ -1,4 +1,4 @@
-section.item-cart{
+.item-cart{
     margin: 2em auto;
 }
 
@@ -7,6 +7,7 @@ section.item-cart{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 1.25em;
 }
 
 .cart-list > li + li {
@@ -20,7 +21,12 @@ section.item-cart{
 }
 
 .cart-item-details{
+    flex-grow: 1;
     max-width: 400px;
+}
+
+.cart-item-details h2{
+    text-transform: capitalize;
 }
 
 .cart-item-details .price{
@@ -51,6 +57,7 @@ section.item-cart{
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
+    border-bottom: 1px solid black;
 }
 
 .total button{

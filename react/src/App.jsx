@@ -10,6 +10,7 @@ import Blog from './pages/Blog'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
 import AddProduct from './pages/AddProduct'
+import Cart from './pages/Cart'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
       <Route path='/about' element={<About />} />
+      <Route path='/cart' element={<Cart />} />
       <Route path='/products' element={<Products />}/>
       <Route path='/add-product' element={<AddProduct />}/>
       <Route path='/blog' element={<Blog />}/>

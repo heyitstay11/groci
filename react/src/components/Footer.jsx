@@ -66,7 +66,7 @@ const Footer = () => {
     <ul className="phone-nav">
         <li><Link to="/"><img src="../imgs/home.svg" alt=""/></Link></li>
         <li><Link to="/products"><img src="../imgs/menu.svg" alt=""/></Link></li>
-        <li><Link to="/blog"><img src="../imgs/cart.svg" alt=""/></Link></li>
+        <li><Link to="/cart"><img src="../imgs/cart.svg" alt=""/></Link></li>
         <li><Link to="/contact"><img className="invert-icon" src="../imgs/avatar.svg" alt=""/></Link></li>
     </ul>
     </div>

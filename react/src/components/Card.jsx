@@ -2,19 +2,21 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/services/cartSlice';
 
-const Card = ({ sale = 0, img = '', _id, title = 'Demo Title', quantity = 1, price = 1 }) => {
+const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 1, price = 1 }) => {
     const dispatch = useDispatch();
     const [count, setCount] = useState(1); 
+    const salePrice =  price - Number((price * (sale / 100)).toFixed(2))
 
     const handleChange = (e) => setCount(e.target.value)
-    const increment = () => setCount(prev => prev + 1);
+    const increment = () => setCount(prev => (+prev) + 1);
     const decrement = () => {
         if(count == 1) return;
-        setCount(prev => prev - 1);
+        setCount(prev => (+prev) - 1);
     }
 
     const handleAddToCart = () => {
-        dispatch(addProduct({ _id, title, count, max_quantity: quantity, price , sale , img }));
+        if(!count || count > quantity) return;
+        dispatch(addProduct({ _id, title, count: +count, max_quantity: quantity, price: salePrice , sale , img, desc }));
     }
     return (
         <div className="card">
@@ -23,11 +25,11 @@ const Card = ({ sale = 0, img = '', _id, title = 'Demo Title', quantity = 1, pri
                 <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
             </div>
             <div className="img">
-                <img src="../imgs/sale-img.webp"  alt=""/>
+                <img src={'https://i.imgur.com/PadgPC2.jpeg'}  alt=""/>
             </div>
             <div className="title">{title}</div>
             <div className="stock"> <span className="tick-icon"><img className="tick-icon" src="../imgs/tick.svg" alt="" /></span>In Stock <span className="available">1kg</span></div>
-            <div className="price"><s>${price}</s> <strong>${ price - (price * (sale / 100)).toFixed(2) }</strong></div>
+            <div className="price"><s>${price}</s> <strong>${salePrice}</strong></div>
             <div className="counter">
                 <button className="decrement" onClick={decrement}>-</button>
                 <input value={count} onChange={handleChange} type="number" min='1' max={quantity} />

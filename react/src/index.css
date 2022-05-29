@@ -250,6 +250,7 @@ img:not([alt]) {
 }
 
 .cart{
+    position: relative;
     color: black;
     font-size: .9rem;
     font-weight: normal;
@@ -279,6 +280,19 @@ img:not([alt]) {
     border-radius: 50%;
     margin-bottom: -1em;
     background-color: white;
+}
+
+.cart > .cart-items{
+    background-color: rgb(136, 129, 0);
+    position: absolute;
+    top: 0;
+    left: -0.5em;
+    text-align: center;
+    color: white;
+    height: 1.5em;
+    min-width: 2ch;
+    width: auto;
+    border-radius: 50%;
 }
 
 .search-bar-content{
@@ -405,6 +419,7 @@ nav{
 }
 
 .card{
+    width: 100%;
     padding: .5em;
     background-color: white;
     text-align: center;
@@ -442,6 +457,9 @@ nav{
 }
 
 .card .img img{
+    margin: auto;
+    height: 100%;
+    max-width: 100%;
     background-size: cover;
 }
 

@@ -10,7 +10,6 @@ const AddProduct = () => {
     
     const onSubmit = (data) => {
         addProduct({product: data, token })
-        .then(res => console.log(res))
         .then(data => console.log(data))
         .catch(data => console.log(data));
     }

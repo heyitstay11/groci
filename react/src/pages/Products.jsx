@@ -1,9 +1,15 @@
 import '../css/products.css'
 import { useProductsQuery } from "../redux/services/productApi";
 import Card from '../components/Card';
+import { useState } from 'react';
 
 const Products = () => {
     const { data, isLoading, error } = useProductsQuery();
+    const [filterPrice, setFilterPrice ] = useState(0);
+    
+    const handleFilter = (e) => {
+        e.preventDefault();
+    }
 
 return (
     <main className='product-main'>
@@ -14,16 +20,16 @@ return (
 
         <div className="product-controls">
 
-            <div className="filter">
+            <form className="filter">
 
                 <p>Filter By Price</p>
-                <input className="price-range" step="1" type="range" name="price" id="" min="0" max="100"/>
+                <input className="price-range" step="20" value={filterPrice} onChange={(e) => setFilterPrice(e.target.value)} type="range" name="price" id="filter-price" min="0" max="100"/>
                 <div className="btn-container">
-                    <button>Filter</button>
-                    <span>Price $0 - $40</span>
+                    <button onClick={handleFilter}>Filter</button>
+                    <span>Price ${filterPrice} - $100</span>
                 </div>  
 
-            </div>
+            </form>
 
             <div className="status">
                 <p>Product Status</p>
@@ -64,9 +70,9 @@ return (
             <div className="product-grid">
                 {isLoading ? (<h2>Loading, please wait ...</h2>):
                 data?.map(item => {
-                    const {sale, img, _id, title, quantity, price } = item;
+                    const { sale, img, _id, title, quantity, price, desc } = item;
 
-                    return <Card key={_id} {...{sale, img, _id, title, quantity, price }} />
+                    return <Card key={_id} {...{sale, img, _id, title, quantity, price, desc }} />
                 })}
             </div>
     
