@@ -1,5 +1,6 @@
 import '../css/cart.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { reset } from '../redux/services/cartSlice';
 import CartItem from '../components/CartItem';
 import { useDeleteCartMutation, useUpdateCartMutation } from '../redux/services/cartApi';
@@ -19,7 +20,7 @@ const Cart = () => {
     }
 
     useEffect(() => {
-        if(token){
+        if(token && products.length){
             updateCart({ token, cart: { products, total_price, quantity } });
         }
     }, [products]);
@@ -34,8 +35,8 @@ const Cart = () => {
 
         <div className="total wrapper">
             <p>Your Cart Total is  ${total_price}</p>
-            <div className="">
-                <button>Checkout</button> 
+            <div className="btn-wrapper">
+                <Link to='/checkout' >Checkout</Link> 
                 <button onClick={handleEmptyCart}>Empty Cart</button>
             </div>
         </div>

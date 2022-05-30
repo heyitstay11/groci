@@ -7,8 +7,12 @@ const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 
     const [count, setCount] = useState(1);
     const salePrice =  price - Number((price * (sale / 100)).toFixed(2));
 
-    const handleChange = (e) => setCount(e.target.value)
-    const increment = () => setCount(prev => (+prev) + 1);
+    const handleChange = (e) => {
+        setCount(e.target.value)
+    } 
+    const increment = () => {
+        setCount(prev => (+prev) + 1);
+    }
     const decrement = () => {
         if(count == 1) return;
         setCount(prev => (+prev) - 1);

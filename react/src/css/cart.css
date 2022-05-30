@@ -60,8 +60,21 @@
     border-bottom: 1px solid black;
 }
 
-.total button{
-    margin: 0 auto;
+.total .btn-wrapper button, .total .btn-wrapper a, .nice-btn{
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    display: inline-block;
+    font-weight: bold;
+    font-size: .8rem;
+    background: linear-gradient(135deg, #ff934b 0%,#ff5e62 100%);
+    color: white;
+    padding: .8em 1em;
+    border: none;
+    cursor: pointer;
+    transition: background .2s ease;
+    margin: .25em;
 }
 
 @media (max-width: 800px) {
@@ -77,6 +90,4 @@
     li > * + * {
         margin-top: 1em;
     }
-
-
 }

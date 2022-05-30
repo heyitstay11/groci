@@ -1,0 +1,72 @@
+.order-form{
+    background-color: white;
+    margin: 3em auto;
+    padding: 1.5em;
+    max-width: 1000px;
+}
+
+.order-form h2{
+    text-align: left;
+    margin-bottom: .75em;
+}
+
+.order-form form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin: 1em auto;
+}
+
+.order-form form label{
+    color: rgb(44, 44, 44);
+    margin-bottom: .25em;
+}
+
+.order-form form input{
+    padding: .2em 0 .2em .5em;
+    max-width: 500px;
+    margin-bottom: .75em;
+}
+
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+  
+td, th {
+    border: 1px solid rgb(190,190,190);
+    padding: 10px 20px;
+}
+
+th {
+    background-color: rgb(235,235,235);
+}
+
+td {
+    text-align: center;
+}
+
+td.title{
+    text-transform: capitalize;
+}
+
+tr:nth-child(even) td {
+    background-color: rgb(250,250,250);
+}
+
+tr:nth-child(odd) td {
+    background-color: rgb(245,245,245);
+}
+
+caption {
+    font-size: 1.4rem;
+    text-align: left;
+    padding: 10px;
+}
+
+tfoot{
+    font-weight: bold;
+}

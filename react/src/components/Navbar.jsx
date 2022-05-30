@@ -23,7 +23,9 @@ const Navbar = () => {
         if(!cartData && !token){
             createCart({token}).then(data => console.log(data));
         }else{
-            setCart(cartData);
+            if(cartData){
+                dispatch(setCart(cartData));
+            }
         }
     }, [cartData]);
 
