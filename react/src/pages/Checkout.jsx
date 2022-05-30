@@ -1,17 +1,42 @@
 import '../css/checkout.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { reset } from '../redux/services/cartSlice';
 
 const Checkout = () => {
+    const [order, setOrder] = useState({});
+    const [paymentMethod, setPaymentMethod] = useState('cash');
     const { products, total_price } = useSelector((state) => ({...state.cart}));
+    const { token } = useSelector((state) => ({...state.auth}));
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onSave = ({city, firstName, lastName, phone, pin, state, street}) => {
-       
+       const name = `${firstName} ${lastName}`
+       const address = `${street}, ${city}, ${state}, ${city}-${pin}`;
+       setOrder({address, name, phone, total_price, products})
     }
 
     const handleOrder = () => {
-    
+        if(order.name && products.length){
+            fetch('http://localhost:5000/order/create', {
+                method: 'POST',
+                body: JSON.stringify({...order, payment_method: paymentMethod}),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': token
+                }
+            }).then(res => res.json())
+            .then(data => {
+                if(data.id){
+                    navigate(`/orders/${data.id}`);
+                    dispatch(reset);
+                }
+            });
+        }
     }
  
     return (
@@ -79,11 +104,11 @@ const Checkout = () => {
 
                 <form>
                     <div className="">
-                        <input type="radio" id='card' name="payment_method" value={'Card'} /> 
+                        <input onChange={() => setPaymentMethod('card')} type="radio" id='card' name="payment_method" value={'card'} /> 
                         <label htmlFor="card">Card Payment</label>
                     </div>
                     <div className="">
-                        <input type="radio" defaultChecked id='cash' name="payment_method" value={'Cash'} /> 
+                        <input onChange={() => setPaymentMethod('cash_on_delivery')} type="radio" defaultChecked id='cash' name="payment_method" value={'cash'} /> 
                         <label htmlFor="cash">Cash on Delivery</label>
                     </div>
                     <div className="">

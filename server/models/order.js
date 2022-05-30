@@ -6,6 +6,11 @@ const OrderSchema = new mongoose.Schema({
         ref: "User",
         required: true
     },
+    products: {
+        type: Array,
+        required: true,
+        default: []
+    },
     name: {
         type: String,
         required: true
@@ -19,7 +24,7 @@ const OrderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    total: {
+    total_price: {
         type: Number,
         required: true,
         min: 0,

@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import Order from '../models/order.js';
 const router = Router();
+import { requireAuth } from '../middlewares/jwt.js';
 
+
+router.use(requireAuth)
 // get all order by user id
 router.get('/', async (req, res) => {
     res.send('Orders');
@@ -10,10 +13,10 @@ router.get('/', async (req, res) => {
 // create order
 router.post('/create', async (req, res) => {
     const { id } = req.user;
-    const {address, phone, total, payment_method } = req.body;
+    const { address, name, phone, total_price, payment_method, products} = req.body;
     try {
-        const order = await Order.create({ customer: id, address, phone, total, payment_method });
-        res.json(order._id);
+        const order = await Order.create({ customer: id, address, name, phone, total_price, payment_method, products });
+        res.json({id: order._id});
     }catch (error) { 
         res.status(500).json({ error })
     }
