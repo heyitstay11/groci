@@ -742,3 +742,7 @@ nav{
     height: .9rem;
     margin-inline-end: .2em;
 }
+
+.single-order{
+    padding: 1.5em;
+}

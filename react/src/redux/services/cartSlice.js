@@ -34,6 +34,7 @@ export const cartSlice = createSlice({
             state.products = [...state.products.slice(0, findIndex), ...state.products.slice(findIndex + 1)];
         },
         reset: (state) => {
+            console.log('reset');
             state.products = [];
             state.total_price = 0;
             state.quantity = 0;

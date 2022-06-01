@@ -20,12 +20,12 @@ const Navbar = () => {
     }
 
     useEffect(() => {
-        if(!cartData && !token){
-            createCart({token}).then(data => console.log(data));
-        }else{
-            if(cartData){
-                dispatch(setCart(cartData));
+        if(!cartData){
+            if(token){
+                createCart({token}).then(data => console.log(data));
             }
+        }else{
+            dispatch(setCart(cartData));
         }
     }, [cartData]);
 

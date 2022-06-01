@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import { reset } from '../redux/services/cartSlice';
+import { useDeleteCartMutation } from '../redux/services/cartApi';
 
 const Checkout = () => {
     const [order, setOrder] = useState({});
@@ -11,6 +12,7 @@ const Checkout = () => {
     const { products, total_price } = useSelector((state) => ({...state.cart}));
     const { token } = useSelector((state) => ({...state.auth}));
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [deleteCart] =  useDeleteCartMutation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -31,9 +33,12 @@ const Checkout = () => {
                 }
             }).then(res => res.json())
             .then(data => {
+                console.log(data);
                 if(data.id){
-                    navigate(`/orders/${data.id}`);
-                    dispatch(reset);
+                    const { id } = data;
+                    dispatch(reset());
+                    deleteCart({ token })
+                    .then(data => navigate(`/orders/${id}`));
                 }
             });
         }

@@ -59,6 +59,7 @@ router.put('/', async (req, res) => {
 // delete cart
 router.delete('/', async (req, res) => {
     const { id } = req.user;
+    console.log('del', id);
     try {
         let cart = await Cart.findOne({ customer: id });
         

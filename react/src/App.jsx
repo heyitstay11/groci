@@ -12,6 +12,7 @@ import Contact from './pages/Contact'
 import AddProduct from './pages/AddProduct'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
+import SingleOrder from './pages/SingleOrder'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/products' element={<Products />}/>
       <Route path='/add-product' element={<AddProduct />}/>
+      <Route path='/orders/:id' element={<SingleOrder />}/>
       <Route path='/blog' element={<Blog />}/>
       <Route path='/faq' element={<Faq />}/>
       <Route path='/contact' element={<Contact />}/>

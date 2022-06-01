@@ -10,6 +10,16 @@ router.get('/', async (req, res) => {
     res.send('Orders');
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const order = await Order.findById(id);
+        res.json(order);
+    } catch (error) {
+        res.status(500).json({ error })
+    }
+});
+
 // create order
 router.post('/create', async (req, res) => {
     const { id } = req.user;
