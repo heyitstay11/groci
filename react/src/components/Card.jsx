@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/services/cartSlice';
+import { Link } from 'react-router-dom'
 
 const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 1, price = 1 }) => {
     const dispatch = useDispatch();
@@ -29,7 +30,9 @@ const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 
                 <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
             </div>
             <div className="img">
-                <img src={img || 'https://i.imgur.com/PadgPC2.jpeg'}  alt=""/>
+                <Link to={`/products/${_id}`}>
+                    <img src={img || 'https://i.imgur.com/PadgPC2.jpeg'}  alt=""/>
+                </Link>
             </div>
             <div className="title">{title}</div>
             <div className="stock"> <span className="tick-icon"><img className="tick-icon" src="../imgs/tick.svg" alt="" /></span>In Stock <span className="available">1kg</span></div>

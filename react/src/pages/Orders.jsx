@@ -13,7 +13,7 @@ const Orders = () => {
                 {data?.map(order => {
                     const { _id, createdAt, products, total_price, status, payment_method } = order;
                     return (
-                    <>
+                    <div key={_id}>
                         <p><strong>Order Id:</strong>&nbsp;<Link to={`/orders/${_id}`}>{_id}</Link></p>
                         <p><strong>Ordered on:</strong>&nbsp;{createdAt.split('T')[0]}</p>
                         <p><strong>Total Quantity:</strong>&nbsp;{products.length}</p>
@@ -23,7 +23,7 @@ const Orders = () => {
                         <br />
                         <hr/>
                         <br />
-                    </>
+                    </div>
                     )
                 })}
             </div>

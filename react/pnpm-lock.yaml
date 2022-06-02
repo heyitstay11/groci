@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@agney/react-loading': ^0.1.2
   '@reduxjs/toolkit': ^1.8.2
   '@types/react': ^18.0.0
   '@types/react-dom': ^18.0.0
@@ -13,6 +14,7 @@ specifiers:
   vite: ^2.9.9
 
 dependencies:
+  '@agney/react-loading': 0.1.2_react@18.1.0
   '@reduxjs/toolkit': 1.8.2_react-redux@8.0.2+react@18.1.0
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
@@ -27,6 +29,16 @@ devDependencies:
   vite: 2.9.9
 
 packages:
+
+  /@agney/react-loading/0.1.2_react@18.1.0:
+    resolution: {integrity: sha512-kkMpNtdGPfkPXoJQyulJsiapgdbZA0AkMEMOoVYE+10hC151Lvzdjpmg5EITxw+HTNkZ6yGa2EScI+lU/I9UgQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.1.0
+      tiny-invariant: 1.2.0
+    dev: false
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -973,6 +985,10 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
     dev: true
+
+  /tiny-invariant/1.2.0:
+    resolution: {integrity: sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==}
+    dev: false
 
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=}

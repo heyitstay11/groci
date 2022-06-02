@@ -15,7 +15,7 @@ const Cart = () => {
 
     const handleEmptyCart = () => {
         dispatch(reset());
-        deleteCart()
+        deleteCart({ token })
         .then(data => window.location.reload());
     }
 

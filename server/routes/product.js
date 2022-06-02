@@ -15,6 +15,13 @@ router.get('/', async (req, res) => {
 
 // get product by id
 router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const product = await Product.findById(id);
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
 });
 
 // create product

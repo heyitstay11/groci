@@ -2,11 +2,16 @@ import '../css/products.css'
 import { useProductsQuery } from "../redux/services/productApi";
 import Card from '../components/Card';
 import { useState } from 'react';
+import { useLoading, Audio } from '@agney/react-loading';
 
 const Products = () => {
     const { data, isLoading, error } = useProductsQuery();
     const [filterPrice, setFilterPrice ] = useState(0);
-    
+    const { containerProps, indicatorEl } = useLoading({
+        loading: isLoading,
+        indicator: <Audio width="50" />
+    })
+
     const handleFilter = (e) => {
         e.preventDefault();
     }
@@ -68,7 +73,12 @@ return (
             </div>
 
             <div className="product-grid">
-                {isLoading ? (<h2>Loading, please wait ...</h2>):
+                {isLoading ? 
+                ( 
+                <section {...containerProps}>
+                    { indicatorEl }
+                </section>
+                ):
                 data?.map(item => {
                     const { sale, img, _id, title, quantity, price, desc } = item;
 

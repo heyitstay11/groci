@@ -1,18 +1,25 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useOrderQuery } from "../redux/services/orderApi";
+import { useLoading, Audio} from '@agney/react-loading';
 
 const SingleOrder = () => {
     const { id } = useParams();
     const { token } = useSelector((state) => ({...state.auth}));
     const { data: orderData, isLoading} = useOrderQuery({ token, id });
-  
+    const { containerProps, indicatorEl } = useLoading({
+        loading: isLoading,
+        indicator: <Audio width="50" />
+    })
+
     return (
         <main>
-            <div className="wrapper single-order">
+            <div className="wrapper single-order"  >
                 <h1>Your Order</h1>
                 {isLoading ? 
-                <h1>Loading</h1>:
+                <section {...containerProps}>
+                    { indicatorEl }
+                </section>:
                 <>
                     <p><strong>Order Id:</strong>&nbsp;{orderData._id}</p>
                     <p><strong>Ordered on:</strong>&nbsp;{orderData.createdAt.split('T')[0]}</p>
@@ -21,7 +28,7 @@ const SingleOrder = () => {
                     <p><strong>Payment Method:</strong>&nbsp;{orderData.payment_method}</p>
                     <p><strong>Order Status:</strong>&nbsp;{orderData.status}</p>
                     
-                        <details open="true" style={{ minWidth: '50%'}}>
+                        <details open style={{ minWidth: '50%'}}>
                         <summary>Products</summary>
                         <table style={{ marginTop: '1rem' }}>
                         <thead>
