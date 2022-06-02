@@ -13,6 +13,8 @@ import AddProduct from './pages/AddProduct'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import SingleOrder from './pages/SingleOrder'
+import Orders from './pages/Orders'
+import SingleProduct from './pages/SingleProduct'
 
 const App = () => {
   return (
@@ -26,7 +28,9 @@ const App = () => {
       <Route path='/cart' element={<Cart />} />
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/products' element={<Products />}/>
+      <Route path='/products/:id' element={<SingleProduct />}/>
       <Route path='/add-product' element={<AddProduct />}/>
+      <Route path='/orders' element={<Orders />}/>
       <Route path='/orders/:id' element={<SingleOrder />}/>
       <Route path='/blog' element={<Blog />}/>
       <Route path='/faq' element={<Faq />}/>

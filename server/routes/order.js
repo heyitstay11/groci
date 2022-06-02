@@ -5,9 +5,16 @@ import { requireAuth } from '../middlewares/jwt.js';
 
 
 router.use(requireAuth)
+
 // get all order by user id
 router.get('/', async (req, res) => {
-    res.send('Orders');
+    const { id } = req.user;
+    try {
+        const orders = await Order.find({ customer: id });
+        res.json(orders);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
 });
 
 router.get('/:id', async (req, res) => {
