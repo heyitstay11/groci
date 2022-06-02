@@ -29,7 +29,7 @@ const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 
                 <span className="veg-icon"><img src="../imgs/green-dot.svg" alt=""/></span>
             </div>
             <div className="img">
-                <img src={'https://i.imgur.com/PadgPC2.jpeg'}  alt=""/>
+                <img src={img || 'https://i.imgur.com/PadgPC2.jpeg'}  alt=""/>
             </div>
             <div className="title">{title}</div>
             <div className="stock"> <span className="tick-icon"><img className="tick-icon" src="../imgs/tick.svg" alt="" /></span>In Stock <span className="available">1kg</span></div>

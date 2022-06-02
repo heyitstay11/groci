@@ -102,7 +102,7 @@ const Checkout = () => {
                     <tfoot>
                         <tr>
                             <td>Total</td>
-                            <td>{total_price}</td>
+                            <td>{total_price.toFixed(2)}</td>
                         </tr>
                     </tfoot>
                 </table>

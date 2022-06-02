@@ -17,7 +17,7 @@ const Orders = () => {
                         <p><strong>Order Id:</strong>&nbsp;<Link to={`/orders/${_id}`}>{_id}</Link></p>
                         <p><strong>Ordered on:</strong>&nbsp;{createdAt.split('T')[0]}</p>
                         <p><strong>Total Quantity:</strong>&nbsp;{products.length}</p>
-                        <p><strong>Total Price:</strong>&nbsp;{total_price}</p>
+                        <p><strong>Total Price:</strong>&nbsp;{total_price.toFixed(2)}</p>
                         <p><strong>Payment Method:</strong>&nbsp;{payment_method}</p>
                         <p><strong>Order Status:</strong>&nbsp;{status}</p>
                         <br />

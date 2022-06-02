@@ -43,7 +43,7 @@ const SingleOrder = () => {
                         <tfoot>
                             <tr>
                                 <td>Total</td>
-                                <td>{orderData.total_price}</td>
+                                <td>{orderData.total_price.toFixed(2)}</td>
                             </tr>
                         </tfoot>
                     </table> 

@@ -34,7 +34,7 @@ const Cart = () => {
         </div>
 
         <div className="total wrapper">
-            <p>Your Cart Total is  ${total_price}</p>
+            <p>Your Cart Total is  ${total_price.toFixed(2)}</p>
             <div className="btn-wrapper">
                 <Link to='/checkout' >Checkout</Link> 
                 <button onClick={handleEmptyCart}>Empty Cart</button>
