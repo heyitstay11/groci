@@ -1,18 +1,17 @@
 import { useForm } from 'react-hook-form';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setLogin } from '../redux/services/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { loading, error } = useSelector((state) => ({...state.auth}));
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
 
-        fetch('http://localhost:5000/auth/login', {
+        fetch(`${import.meta.env.VITE_SERVER_URL}/auth/login`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {

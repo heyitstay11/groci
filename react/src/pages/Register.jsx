@@ -9,7 +9,7 @@ const Register = () => {
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        fetch('http://localhost:5000/auth/register', {
+        fetch(`${import.meta.env.VITE_SERVER_URL}/auth/register`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {

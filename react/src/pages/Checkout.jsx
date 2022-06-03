@@ -26,7 +26,7 @@ const Checkout = () => {
 
     const handleOrder = () => {
         if(order.name && products.length){
-            fetch('http://localhost:5000/order/create', {
+            fetch(`${import.meta.env.VITE_SERVER_URL}/order/create`, {
                 method: 'POST',
                 body: JSON.stringify({...order, payment_method: paymentMethod}),
                 headers: {
