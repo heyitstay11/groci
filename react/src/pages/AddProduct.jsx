@@ -39,8 +39,8 @@ const AddProduct = () => {
                        <input {...register('quantity', { required: true, min: 1 })} type="number" min={0} id="p_quantity" placeholder="100" />
                        <label htmlFor="p_sale">Sale (percent)</label>
                        <input {...register('sale', { required: true, min: 0 })} type="number" min={0} max={100} id="p_sale" placeholder="10" />
-                       <label htmlFor="p_mname">Measurement (default kg)</label>
-                       <input {...register('m_name')} type="text" id="p_mname" placeholder="kg, ml, litre, dozen" />
+                       <label htmlFor="p_mname">Measurement (default 1kg)</label>
+                       <input {...register('m_name')} type="text" id="p_mname" placeholder="1kg, 500ml, 1litre, 1dozen" />
                        <label htmlFor="p_mdesc">Measurement Description (optional)</label>
                        <input {...register('m_desc')} type="text" id="p_mdesc" placeholder="a dozen contains 12 pieces" />
                        <div className="">

@@ -5,6 +5,7 @@ import { logoutUser } from '../redux/services/authSlice'
 import { useEffect } from "react";
 import { useCartQuery, useCreateCartMutation } from "../redux/services/cartApi";
 import { setCart } from "../redux/services/cartSlice";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
     const [isNavOpen, setNavOpen] = useState(false);
@@ -16,6 +17,7 @@ const Navbar = () => {
     const dispatch = useDispatch();
     
     const handleLogout = () => {
+        toast.success('Logged out succesfully');
         dispatch(logoutUser());
     }
 

@@ -1,15 +1,28 @@
 import { useSelector } from "react-redux";
 import { useAllOrdersQuery } from "../redux/services/orderApi";
 import { Link } from 'react-router-dom';
+import { useLoading, Audio } from "@agney/react-loading";
 
 const Orders = () => {
     const { token } = useSelector((state) => ({...state.auth}));
     const { data, isLoading } = useAllOrdersQuery(token);
+    const { containerProps, indicatorEl } = useLoading({
+        loading: isLoading,
+        indicator: <Audio width="50" />
+    })
     return (
         <main>
             <div className="wrapper single-order">
             <h1>All Orders</h1>
             <br />
+            {isLoading ? 
+            (
+            <section {...containerProps}>
+                { indicatorEl }
+            </section>
+            ) : (
+                <>
+                {!!!data ? (<h2>No Orders to Show</h2>) : null}
                 {data?.map(order => {
                     const { _id, createdAt, products, total_price, status, payment_method } = order;
                     return (
@@ -26,6 +39,9 @@ const Orders = () => {
                     </div>
                     )
                 })}
+                </>
+            ) }
+                
             </div>
         </main>
     )

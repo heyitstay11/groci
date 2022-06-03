@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import { reset } from '../redux/services/cartSlice';
 import { useDeleteCartMutation } from '../redux/services/cartApi';
+import { toast } from 'react-toastify';
 
 const Checkout = () => {
     const [order, setOrder] = useState({});
@@ -19,7 +20,8 @@ const Checkout = () => {
     const onSave = ({city, firstName, lastName, phone, pin, state, street}) => {
        const name = `${firstName} ${lastName}`
        const address = `${street}, ${city}, ${state}, ${city}-${pin}`;
-       setOrder({address, name, phone, total_price, products})
+       setOrder({address, name, phone, total_price, products});
+       toast.success('Order detailed saved');
     }
 
     const handleOrder = () => {
@@ -41,6 +43,8 @@ const Checkout = () => {
                     .then(data => navigate(`/orders/${id}`));
                 }
             });
+        }else{
+            toast.error('Fill the form correctly');
         }
     }
  

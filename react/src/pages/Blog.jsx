@@ -3,7 +3,7 @@ import '../css/blog.css';
 const Blog = () => {
     return (
         <main className="blog-main">
-
+        <br />
         <h1 className="visually-hidden">Blog</h1>
            
          <section className="blog wrapper">

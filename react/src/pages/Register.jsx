@@ -2,6 +2,7 @@ import '../css/about.css'
 import '../css/register.css'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -17,8 +18,10 @@ const Register = () => {
         }).then(res => res.json())
         .then(data => {
             if(data.token){
+                toast.success('Account creates succesfully');
                 navigate('/login');
             }else{
+                toast.error('An error occured, try again');
                 console.log(data);
             }
         })

@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux'
 import { setLogin } from '../redux/services/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -20,9 +21,11 @@ const Login = () => {
         }).then(res => res.json())
         .then(data => {
             if(data.token){
+                toast.success('Logged in succesfully');
                 dispatch(setLogin(data));
                 navigate('/');
             }else{
+                toast.error('An error occured, try again');
                 console.log(data);
             }
         })

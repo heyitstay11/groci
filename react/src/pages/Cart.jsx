@@ -43,6 +43,8 @@ const Cart = () => {
 
         <section className="item-cart wrapper">
             <ul className="cart-list">
+                <br />
+                {!products.length ? (<h2>Your Cart is empty</h2>) : null}
                 {products?.map(product => {
                     return <CartItem key={product._id} {...product} />
                 })}
