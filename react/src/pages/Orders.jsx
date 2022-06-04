@@ -22,7 +22,7 @@ const Orders = () => {
             </section>
             ) : (
                 <>
-                {!!!data ? (<h2>No Orders to Show</h2>) : null}
+                {data?.length === 0 ? (<h2>No Orders to Show</h2>) : null}
                 {data?.map(order => {
                     const { _id, createdAt, products, total_price, status, payment_method } = order;
                     return (

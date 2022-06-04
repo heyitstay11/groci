@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/services/cartSlice';
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 1, price = 1 }) => {
     const dispatch = useDispatch();
@@ -20,7 +21,12 @@ const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 
     }
 
     const handleAddToCart = () => {
-        if(!count || count > quantity) return;
+        if(!count) return;
+        if(count > quantity){
+            console.log('here');
+            toast.error(`There are only ${quantity} in stock`);
+            return;
+        }
         dispatch(addProduct({ _id, title, count: +count, max_quantity: quantity, price: salePrice , sale , img, desc }));
     }
     return (

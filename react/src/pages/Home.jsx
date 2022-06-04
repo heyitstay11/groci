@@ -1,6 +1,14 @@
+import { Audio, useLoading } from '@agney/react-loading';
 import Card from '../components/Card';
+import { useProductsQuery } from '../redux/services/productApi';
 
 const Home = () => {
+    const { data: productsData = [], isLoading, error } = useProductsQuery();
+    const { containerProps, indicatorEl } = useLoading({
+        loading: isLoading,
+        indicator: <Audio width="100" />
+    })
+
     return (
         <main>
 
@@ -16,11 +24,21 @@ const Home = () => {
         </div>
 
         <div className="product-grid">
-            {[1,2,3,4,5,6,7,8].map(item => {
-               return (
-                   <Card key={item}/>
-               )
-            })}
+            {isLoading ? 
+            (
+                <section style={{ textAlign: 'center', margin: '10px auto' }} {...containerProps}>
+                    { indicatorEl }
+                    <h2>Loading Please wait ....</h2>
+                </section>
+            )   :
+            (
+                productsData?.slice(0, 8).map(item => {
+                    const { sale, img, _id, title, quantity, price, desc } = item;
+
+                    return <Card key={_id} {...{sale, img, _id, title, quantity, price, desc }} />
+                 })
+            )    
+            }
         </div>
 
         </section>
@@ -38,11 +56,21 @@ const Home = () => {
             </div>
     
             <div className="product-grid">
-                {[11,21,31,41].map(item => {
-                return (
-                    <Card key={item}/>
-                )
-                })}
+            {isLoading ? 
+            (
+                <section style={{ textAlign: 'center', margin: '10px auto' }} {...containerProps}>
+                    { indicatorEl }
+                    <h2>Loading Please wait ....</h2>
+                </section>
+            )   :
+            (
+                productsData?.slice(-4).map(item => {
+                    const { sale, img, _id, title, quantity, price, desc } = item;
+
+                    return <Card key={_id} {...{sale, img, _id, title, quantity, price, desc }} />
+                 })
+            )    
+            }
             </div>
 
             </section>

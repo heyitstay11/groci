@@ -7,7 +7,7 @@ import { useLoading, Audio } from '@agney/react-loading';
 const Products = () => {
     const { data: productsData = [], isLoading, error } = useProductsQuery();
     const [filterPrice, setFilterPrice ] = useState(0);
-    const [status, setStatus] = useState({ onSale: false, inStock: false });
+    const [status, setStatus] = useState({ onSale: false, inStock: false, sort : '' });
     const { containerProps, indicatorEl } = useLoading({
         loading: isLoading,
         indicator: <Audio width="50" />
@@ -24,12 +24,18 @@ const Products = () => {
         if(status.onSale){
             filteredProducts = filteredProducts.filter(product => product.sale !== 0);
         }
+        if(status.sort === 'price'){
+            filteredProducts.sort((a,b) => a.price - b.price);
+        }
+        if(status.sort === 'alphabetical'){
+            filteredProducts.sort((a,b) => {
+                if(a.title < b.title)    return -1;
+                if(a.title > b.title)    return 1;
+                return 0;
+            });
+        }
         return filteredProducts;
     }, [productsData, status, filterPrice]);
-
-    const handleFilter = (e) => {
-        e.preventDefault();
-    }
 
     const maxPrice = filteredData?.reduce((prev, curr) => {
         return prev >= curr?.price ? prev : curr?.price ;
@@ -49,7 +55,7 @@ return (
                 <p>Filter By Price</p>
                 <input className="price-range" step="20" value={filterPrice} onChange={(e) => setFilterPrice(e.target.value)} type="range" name="price" id="filter-price" min="0" max={maxPrice - 1 || 0}/>
                 <div className="btn-container">
-                    <button onClick={handleFilter}>Filter</button>
+                    <button>Filter</button>
                     <span>Price ${filterPrice} - ${maxPrice}</span>
                 </div>  
 
@@ -80,10 +86,10 @@ return (
 
                     <div className="sort-controls">
                         <label htmlFor="sort-by-category" className="visually-hidden">Sort By Categories</label>
-                        <select name="sort-by-category" >
+                        <select name="sort-by-category" defaultValue={'categories'} onChange={(e) => setStatus(prev => ({...prev, sort: e.target.value }))} >
                             <option value="categories" disabled >Sort By category</option>
                             <option value="price">Price</option>
-                            <option value="stock">Stock</option>
+                            <option value="alphabetical">Aphabetical</option>
                         </select>
                     </div>
                 </div>
