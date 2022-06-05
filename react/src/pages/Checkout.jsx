@@ -6,21 +6,24 @@ import { useState } from 'react';
 import { reset } from '../redux/services/cartSlice';
 import { useDeleteCartMutation } from '../redux/services/cartApi';
 import { toast } from 'react-toastify';
+import useRazorpay from 'react-razorpay'
 
 const Checkout = () => {
     const [order, setOrder] = useState({});
-    const [paymentMethod, setPaymentMethod] = useState('cash');
+    const [paymentMethod, setPaymentMethod] = useState('cash_on_delivery');
     const { products, total_price } = useSelector((state) => ({...state.cart}));
     const { token } = useSelector((state) => ({...state.auth}));
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [deleteCart] =  useDeleteCartMutation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const Razorpay = useRazorpay();
 
+    
     const onSave = ({city, firstName, lastName, phone, pin, state, street}) => {
        const name = `${firstName} ${lastName}`
        const address = `${street}, ${city}, ${state}, ${city}-${pin}`;
-       setOrder({address, name, phone, total_price, products});
+       setOrder({address, name, phone, total_price : Number(total_price.toFixed(2)), products});
        toast.success('Order detailed saved');
     }
 
@@ -28,19 +31,61 @@ const Checkout = () => {
         if(order.name && products.length){
             fetch(`${import.meta.env.VITE_SERVER_URL}/order/create`, {
                 method: 'POST',
-                body: JSON.stringify({...order, payment_method: paymentMethod}),
+                body: JSON.stringify({...order, payment_method: 'cash_on_delivery'}),
                 headers: {
                     'Content-Type': 'application/json',
                     'x-auth-token': token
                 }
             }).then(res => res.json())
             .then(data => {
-                console.log(data);
                 if(data.id){
                     const { id } = data;
-                    dispatch(reset());
-                    deleteCart({ token })
-                    .then(data => navigate(`/orders/${id}`));
+                    if(paymentMethod === 'card'){
+                        fetch(`${import.meta.env.VITE_SERVER_URL}/payment/razorpay`, {
+                            method: 'POST',
+                            body: JSON.stringify({id}),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'x-auth-token': token
+                            }
+                        }).then(res => res.json())
+                        .then(data => {
+                                const options = {
+                                    key: import.meta.env.VITE_RAZOR_KEY_ID,
+                                    amount: data.amount,
+                                    currency: data.currency,
+                                    order_id: data.id,
+                                    handler: async (response) => {
+                                        try {
+                                            const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/payment/verify`, {
+                                                method: 'POST',
+                                                body: JSON.stringify({...response, orderId: id}),
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'x-auth-token': token
+                                                }
+                                            });
+                                            const data = await res.json();
+                                            console.log(data);
+                                            if(data.msg){
+                                                dispatch(reset());
+                                                deleteCart({ token })
+                                                .then(data => navigate(`/orders/${id}`));
+                                            }
+                                        } catch (error) {
+                                            console.log(error);
+                                        }
+                                    }
+                                };
+                                const razorpay = new Razorpay(options);
+                                razorpay.open();
+                        })
+                        .catch(err => console.log(err))
+                    }else{
+                        dispatch(reset());
+                        deleteCart({ token })
+                        .then(data => navigate(`/orders/${id}`));
+                    }
                 }
             });
         }else{
