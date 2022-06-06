@@ -82,14 +82,14 @@ const Navbar = () => {
         
         <nav>
             <ul className={`nav-list ${isNavOpen ? 'active': ''} `}>
-                <li><NavLink to='/'  className={({ isActive }) => isActive ? 'active' : ''} >Home</NavLink></li>
-                <li><NavLink to='/about' className={({ isActive }) => isActive ? 'active' : ''}>About Us</NavLink></li>
-                <li><NavLink to='/products' className={({ isActive }) => isActive ? 'active' : ''}>Shop </NavLink></li>
-                <li><NavLink to='/cart' className={({ isActive }) => isActive ? 'active' : ''}>Cart</NavLink></li>
-                <li><NavLink to='/orders' className={({ isActive }) => isActive ? 'active' : ''}>Orders</NavLink></li>
-                <li><NavLink to='/blog' className={({ isActive }) => isActive ? 'active' : ''}>Blog </NavLink></li>
-                <li><NavLink to='/faq' className={({ isActive }) => isActive ? 'active' : ''}>FAQ </NavLink></li>
-                <li><NavLink to='/contact' className={({ isActive }) => isActive ? 'active' : ''}>Contact </NavLink></li>
+                <li><NavLink to='/' onClick={() => setNavOpen(false)}  className={({ isActive }) => isActive ? 'active' : ''} >Home</NavLink></li>
+                <li><NavLink to='/about' onClick={() => setNavOpen(false)}  className={({ isActive }) => isActive ? 'active' : ''}>About Us</NavLink></li>
+                <li><NavLink to='/products' onClick={() => setNavOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>Shop </NavLink></li>
+                <li><NavLink to='/cart' onClick={() => setNavOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>Cart</NavLink></li>
+                <li><NavLink to='/orders' onClick={() => setNavOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>Orders</NavLink></li>
+                <li><NavLink to='/blog' onClick={() => setNavOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>Blog </NavLink></li>
+                <li><NavLink to='/faq' onClick={() => setNavOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>FAQ </NavLink></li>
+                <li><NavLink to='/contact' onClick={() => setNavOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>Contact </NavLink></li>
             </ul>
         </nav>
     </header>

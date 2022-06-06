@@ -24,6 +24,11 @@ export const productApi = createApi({
             }),
             invalidatesTags: ['Product']
         }),
+        editProduct: builder.mutation({
+            query: ({ product, token }) => ({
+                
+            })
+        }),
     }),
 });
 

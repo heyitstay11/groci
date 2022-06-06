@@ -1,31 +1,43 @@
 import '../css/addproduct.css';
 import { useForm } from 'react-hook-form';
-import { useAddProductMutation } from '../redux/services/productApi';
+import { useAddProductMutation, useProductQuery } from '../redux/services/productApi';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
-const AddProduct = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+const EditProduct = () => {
+    const { id } = useParams();
+    const { data: productData } = useProductQuery(id);
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        defaultValues: {...productData}
+    });
     const [addProduct] = useAddProductMutation();
     const { token } = useSelector((state) => ({...state.auth}));
-    
+    const { _id, title, quantity, sale , img, desc, price, measurement: { name, desc: m_desc } = {}  } = productData || {};
+
     const onSubmit = (data) => {
-        addProduct({product: data, token })
-        .then(data => console.log(data))
-        .catch(data => console.log(data));
+        console.log(data);
+        // addProduct({product: data, token })
+        // .then(data => console.log(data))
+        // .catch(data => console.log(data));
     }
+
+    useEffect(() => {
+        reset(productData);
+    }, [productData])
 
     return (
         <main>
 
         <div className="banner">
-            <h1>Add Product</h1>
-            <p className="bread-crumbs">Home / add-product</p>
+            <h1>Edit Product</h1>
+            <p className="bread-crumbs">Home / edit-product</p>
         </div>
     
         <section className="add-product">
             <div className="wrapper">
                 <div className="description" >
-                    <h2>Product</h2>
+                    <h2>Edit - {title}</h2>
                    <form onSubmit={handleSubmit(onSubmit)} >
                        <label htmlFor="p_name">Product Name</label>
                        <input {...register('title', { required: true })} required type="text" id="p_name" placeholder="eg: Nagpur Oranges (1kg)" />
@@ -40,11 +52,11 @@ const AddProduct = () => {
                        <label htmlFor="p_sale">Sale (percent)</label>
                        <input {...register('sale', { required: true, min: 0 })} type="number" min={0} max={100} id="p_sale" placeholder="10" />
                        <label htmlFor="p_mname">Measurement (default 1kg)</label>
-                       <input {...register('m_name')} type="text" id="p_mname" placeholder="1kg, 500ml, 1litre, 1dozen" />
+                       <input defaultValue={'kg'} {...register('m_name')} type="text" id="p_mname" placeholder="1kg, 500ml, 1litre, 1dozen" />
                        <label htmlFor="p_mdesc">Measurement Description (optional)</label>
                        <input {...register('m_desc')} type="text" id="p_mdesc" placeholder="a dozen contains 12 pieces" />
                        <div className="">
-                        <button>Submit</button>
+                        <button>Edit</button>
                        </div>
                        <br />
                    </form>
@@ -55,4 +67,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct;
+export default EditProduct;

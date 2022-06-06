@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
         const user = await User.login(email, password);
         const jwtToken = getJWTToken({ id: user._id});
         
-        res.json({token: jwtToken, email: user.email });
+        res.json({token: jwtToken, email: user.email, isAdmin: user.isAdmin });
     } catch (error) {
         if(error.message){
             error = error.message;

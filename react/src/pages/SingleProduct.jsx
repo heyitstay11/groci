@@ -1,13 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useProductQuery } from "../redux/services/productApi";
 import '../css/single_product.css';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addProduct } from "../redux/services/cartSlice";
 
 const SingleProduct = () => {
     const { id } = useParams();
     const { data } = useProductQuery(id);
+    const { isAdmin } = useSelector((state) => ({...state.auth}));
     const dispatch = useDispatch();
     const [count, setCount] = useState(1);
     const { _id, title, quantity, sale , img, desc } = data || {};
@@ -49,6 +50,10 @@ const SingleProduct = () => {
                         <br />
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nobis voluptatem tempora, molestias, ad, eaque consequatur id dolores quaerat omnis fuga quas aspernatur recusandae totam quibusdam quidem quo incidunt molestiae?</p>
                     </div>
+                    <br />
+                    {isAdmin ? (
+                        <Link className="nice-btn" to={`/edit-product/${id}`} >Edit {title}</Link>
+                    ) : null}
                 </div>
             </div>
             }

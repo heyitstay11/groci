@@ -1,16 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const user_data = JSON.parse(window.localStorage.getItem('groc_wdp_user'));
-const userState = user_data ? {token: user_data.token, user: user_data.user } : { token: '', user: '' };
+const userState = user_data ? user_data : { token: '', email: '', isAdmin: false };
 
 export const authSlice = createSlice({
     name: 'auth',
-    initialState : {...userState, loading: false, error: false},
+    initialState : {...userState},
     reducers: {
         setLogin: (state, action) => {
             window.localStorage.setItem('groc_wdp_user', JSON.stringify(action.payload))
-            state.user = action.payload.user
-            state.token = action.payload.token
+            state.email = action.payload.email;
+            state.token = action.payload.token;
+            state.isAdmin = action.payload.isAdmin;
         },
         logoutUser: (state, action) => {
             window.localStorage.removeItem('groc_wdp_user');
