@@ -10,8 +10,7 @@ import
   Blog, 
   Faq, 
   Contact, 
-  Cart, 
-  Checkout,
+  Cart,
   Orders } from './pages';
 import { ToastContainer } from 'react-toastify';
 import { Suspense, lazy } from 'react';
@@ -20,6 +19,7 @@ import { useLoading, Audio } from '@agney/react-loading';
 const AddProduct = lazy(() => import('./pages/AddProduct'));
 const SingleOrder = lazy(() => import('./pages/SingleOrder'));
 const SingleProduct = lazy(() => import('./pages/SingleProduct'));
+const Checkout = lazy(() => import('./pages/Checkout'));
 
 
 

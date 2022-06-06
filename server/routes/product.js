@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 import Product from '../models/product.js';
+import User from '../models/user.js';
 import { requireAuth } from '../middlewares/jwt.js';
 
 // get all products
@@ -26,7 +27,12 @@ router.get('/:id', async (req, res) => {
 
 // create product
 router.post('/create', requireAuth , async (req, res) => {
+    const { id } = req.user;
     try {
+        const user = await User.findById(id);
+        if(!user.isAdmin){
+            return res.status(401).json({ error: "You are not authorised for this action"});
+        }
         const { title, desc, sale, price, img, quantity, measurement_name : m_name, measurement_desc: m_desc } = req.body;
         let product = await Product.findOne({ title });
         
