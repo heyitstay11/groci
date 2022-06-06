@@ -24,12 +24,18 @@ export const productApi = createApi({
             }),
             invalidatesTags: ['Product']
         }),
-        editProduct: builder.mutation({
+        updateProduct: builder.mutation({
             query: ({ product, token }) => ({
-                
-            })
+                url: `products/${product._id}`,
+                method: 'PUT',
+                body: product,
+                headers: {
+                    'x-auth-token': token
+                }
+            }),
+            invalidatesTags: ['Product']
         }),
     }),
 });
 
-export const { useProductsQuery, useProductQuery, useAddProductMutation } = productApi;
+export const { useProductsQuery, useProductQuery, useAddProductMutation, useUpdateProductMutation } = productApi;

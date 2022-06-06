@@ -1,8 +1,8 @@
 import '../css/addproduct.css';
 import { useForm } from 'react-hook-form';
-import { useAddProductMutation, useProductQuery } from '../redux/services/productApi';
+import { useProductQuery, useUpdateProductMutation } from '../redux/services/productApi';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const EditProduct = () => {
@@ -11,19 +11,23 @@ const EditProduct = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         defaultValues: {...productData}
     });
-    const [addProduct] = useAddProductMutation();
+    const [updateProduct] = useUpdateProductMutation();
     const { token } = useSelector((state) => ({...state.auth}));
-    const { _id, title, quantity, sale , img, desc, price, measurement: { name, desc: m_desc } = {}  } = productData || {};
+    const { title, measurement: { name: m_name, desc: m_desc } = {}  } = productData || {};
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
-        // addProduct({product: data, token })
-        // .then(data => console.log(data))
-        // .catch(data => console.log(data));
+        updateProduct({product: data, token })
+        .then(res => {
+            if(res.data.id){
+                navigate(`/products/${res.data.id}`)   
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     useEffect(() => {
-        reset(productData);
+        reset({...productData, m_name, m_desc});
     }, [productData])
 
     return (

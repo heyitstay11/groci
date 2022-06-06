@@ -28,12 +28,18 @@ router.get('/:id', async (req, res) => {
 // create product
 router.post('/create', requireAuth , async (req, res) => {
     const { id } = req.user;
+    const { title, 
+            desc, 
+            sale, 
+            price, 
+            img, 
+            quantity, 
+            measurement_name : m_name, measurement_desc: m_desc } = req.body;
     try {
         const user = await User.findById(id);
         if(!user.isAdmin){
             return res.status(401).json({ error: "You are not authorised for this action"});
         }
-        const { title, desc, sale, price, img, quantity, measurement_name : m_name, measurement_desc: m_desc } = req.body;
         let product = await Product.findOne({ title });
         
         if(product){
@@ -49,8 +55,40 @@ router.post('/create', requireAuth , async (req, res) => {
 });
 
 // edit product
-router.put('/:id', async (req, res) => {
+router.put('/:id', requireAuth, async (req, res) => {
+    const { id: userId } = req.user;
+    const { id: productId } = req.params;
+    const { title, 
+            desc, 
+            sale, 
+            price, 
+            img, 
+            quantity, 
+            m_name,  m_desc } = req.body;
+    try {
+        const user = await User.findById(userId);
+        if(!user.isAdmin){
+            return res.status(401).json({ error: "You are not authorised for this action"});
+        }
 
+        let product = await Product.findById(productId);
+
+        if(!product){
+            return res.status(400).json({ error: "No such product exists"})
+        }
+
+        product = await Product.findByIdAndUpdate(productId, { title, 
+            desc, 
+            sale, 
+            price, 
+            img, 
+            quantity, 
+            m_name,  m_desc }, { new: true });
+            
+        res.json({ id: product._id});
+    } catch (error) {
+        res.status(500).json({ error })
+    }
 });
 
 // delete product

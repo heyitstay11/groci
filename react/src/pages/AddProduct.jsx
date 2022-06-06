@@ -10,8 +10,11 @@ const AddProduct = () => {
     
     const onSubmit = (data) => {
         addProduct({product: data, token })
-        .then(data => console.log(data))
-        .catch(data => console.log(data));
+        .then(res => {
+            if(res.data.id){
+                navigate(`/products/${res.data.id}`)   
+            }
+        }).catch(err => console.log(err));
     }
 
     return (
