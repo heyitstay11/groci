@@ -96,19 +96,24 @@ return (
 
             </div>
 
-            <div className="product-grid">
-                {isLoading ? 
-                ( 
-                <section {...containerProps}>
-                    { indicatorEl }
+            {isLoading? 
+            (
+                <section className='loader-wrapper'  {...containerProps}>
+                    <div className="loader-content">
+                        { indicatorEl }
+                        <h2>Loading Please wait ....</h2>
+                    </div>
                 </section>
-                ):
-                filteredData?.map(item => {
+            )   :
+            (
+                <div className="product-grid">
+                {filteredData?.map(item => {
                     const { sale, img, _id, title, quantity, price, desc } = item;
 
                     return <Card key={_id} {...{sale, img, _id, title, quantity, price, desc }} />
-                })}
-            </div>
+                 })}
+                </div>
+            )}
     
         </div>
 

@@ -1,4 +1,5 @@
-.faq-details{
+
+.faq-details.wrapper{
     max-width: 1000px;
     margin: 2em auto;
     display: grid;

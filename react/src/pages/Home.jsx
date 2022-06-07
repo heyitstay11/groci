@@ -23,23 +23,24 @@ const Home = () => {
             <a href="#!">View All</a>
         </div>
 
-        <div className="product-grid">
-            {isLoading ? 
+            {isLoading? 
             (
-                <section style={{ textAlign: 'center', margin: '10px auto' }} {...containerProps}>
-                    { indicatorEl }
-                    <h2>Loading Please wait ....</h2>
+                <section className='loader-wrapper'  {...containerProps}>
+                    <div className="loader-content">
+                        { indicatorEl }
+                        <h2>Loading Please wait ....</h2>
+                    </div>
                 </section>
             )   :
             (
-                productsData?.slice(0, 8).map(item => {
+                <div className="product-grid">
+                {productsData?.slice(0, 8).map(item => {
                     const { sale, img, _id, title, quantity, price, desc } = item;
 
                     return <Card key={_id} {...{sale, img, _id, title, quantity, price, desc }} />
-                 })
-            )    
-            }
-        </div>
+                 })}
+                </div>
+            )}
 
         </section>
 
@@ -55,23 +56,24 @@ const Home = () => {
                 <a href="#!">View All</a>
             </div>
     
-            <div className="product-grid">
-            {isLoading ? 
+            {isLoading? 
             (
-                <section style={{ textAlign: 'center', margin: '10px auto' }} {...containerProps}>
-                    { indicatorEl }
-                    <h2>Loading Please wait ....</h2>
+                <section className='loader-wrapper'  {...containerProps}>
+                    <div className="loader-content">
+                        { indicatorEl }
+                        <h2>Loading Please wait ....</h2>
+                    </div>
                 </section>
             )   :
             (
-                productsData?.slice(-4).map(item => {
+                <div className="product-grid">
+                {productsData?.slice(-4).map(item => {
                     const { sale, img, _id, title, quantity, price, desc } = item;
 
                     return <Card key={_id} {...{sale, img, _id, title, quantity, price, desc }} />
-                 })
-            )    
-            }
-            </div>
+                 })}
+                </div>
+            )}
 
             </section>
 

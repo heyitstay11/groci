@@ -1,7 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import PrivateRoute from './components/PrivateRoute';
+import { Navbar, Footer, PrivateRoute} from './components'
 import 
 { Home, 
   Register, 
@@ -31,11 +29,17 @@ const App = () => {
       loading: true,
       indicator: <Audio width="50" />
   });
+
   return (
     <>
       <ToastContainer />
       <Navbar />
-      <Suspense fallback={<section {...containerProps}> { indicatorEl } </section>}>
+      <Suspense fallback={<section className='loader-wrapper'  {...containerProps}>
+                              <div className="loader-content">
+                                  { indicatorEl }
+                                  <h2>Loading Please wait ....</h2>
+                              </div>
+                          </section>}>
         <Routes>
           <Route path='/' element={<Home />}  />
           <Route path='/register' element={<Register />} />

@@ -17,8 +17,11 @@ const Orders = () => {
             <br />
             {isLoading ? 
             (
-            <section {...containerProps}>
-                { indicatorEl }
+            <section className='loader-wrapper'  {...containerProps}>
+                <div className="loader-content">
+                    { indicatorEl }
+                    <h2>Loading Please wait ....</h2>
+                </div>
             </section>
             ) : (
                 <>

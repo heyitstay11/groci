@@ -16,10 +16,15 @@ const SingleOrder = () => {
         <main>
             <div className="wrapper single-order"  >
                 <h1>Your Order</h1>
-                {isLoading ? 
-                <section {...containerProps}>
-                    { indicatorEl }
-                </section>:
+                {isLoading ?
+                (
+                    <section className='loader-wrapper'  {...containerProps}>
+                        <div className="loader-content">
+                            { indicatorEl }
+                            <h2>Loading Please wait ....</h2>
+                        </div>
+                    </section>
+                ) :
                 <>
                     <p><strong>Order Id:</strong>&nbsp;{orderData._id}</p>
                     <p><strong>Ordered on:</strong>&nbsp;{orderData.createdAt.split('T')[0]}</p>

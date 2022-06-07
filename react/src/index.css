@@ -762,3 +762,13 @@ nav{
 .single-order{
     padding: 1.5em;
 }
+
+.loader-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-content{
+    margin: 1em auto;
+}
