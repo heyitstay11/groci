@@ -30,7 +30,7 @@ const CartItem = ({img = '', _id, count, price = 0, sale = 0, max_quantity = 0, 
             <div className="cart-item-details">
                 <h2>{title}</h2>
                 <p>{desc}</p>
-                <p className="price"> Price : ${price}</p>
+                <p className="price"> Price : ₹{price}</p>
             </div>
             <div className="item-quantity">
                 <div className="counter">

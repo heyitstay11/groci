@@ -10,7 +10,7 @@ router.use(requireAuth)
 router.get('/', async (req, res) => {
     const { id } = req.user;
     try {
-        const orders = await Order.find({ customer: id });
+        const orders = await Order.find({ customer: id }).sort({ "createdAt" : -1 });
         res.json(orders);
     } catch (error) {
         res.status(500).json({ error });

@@ -213,6 +213,22 @@ img:not([alt]) {
     background-image: url('../imgs/avatar.svg');
 }
 
+.address-svg::before{
+    background-image: url('../imgs/address.svg');
+}
+
+.call-svg::before{
+    background-image: url('../imgs/call.svg');
+}
+
+.mail-svg::before{
+    background-image: url('../imgs/mail.svg');
+}
+
+.website-svg::before{
+    background-image: url('../imgs/website.svg');
+}
+
 .search-bar{
     padding: 1.6em .5em;
     background: linear-gradient(135deg, #0cc5b7 0%,#2bd891 100%);

@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import PrivateRoute from './components/PrivateRoute';
 import 
 { Home, 
   Register, 
@@ -11,11 +12,11 @@ import
   Faq, 
   Contact, 
   Cart,
-  Orders } from './pages';
+  Orders,
+  SearchResults } from './pages';
 import { ToastContainer } from 'react-toastify';
 import { Suspense, lazy } from 'react';
 import { useLoading, Audio } from '@agney/react-loading';
-import PrivateRoute from './components/PrivateRoute';
 
 const AddProduct = lazy(() => import('./pages/AddProduct'));
 const EditProduct = lazy(() => import('./pages/EditProduct'));
@@ -44,6 +45,7 @@ const App = () => {
           <Route path='/checkout' element={<PrivateRoute><Checkout /></PrivateRoute>} />
           <Route path='/products' element={<Products />}/>
           <Route path='/products/:id' element={<SingleProduct />} />
+          <Route path='/search/:searchTerm' element={<SearchResults />} />
           <Route path='/add-product' element={<PrivateRoute><AddProduct /></PrivateRoute>}/>
           <Route path='/edit-product/:id' element={<PrivateRoute><EditProduct /></PrivateRoute>}/>
           <Route path='/orders' element={<Orders />}/>

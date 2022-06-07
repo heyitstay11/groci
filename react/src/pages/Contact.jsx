@@ -15,34 +15,30 @@ const Contact = () => {
               <h2>Get In Touch</h2>
 
               <div className="contact-group">
-                  <strong className="icon-link">Address</strong>
+                  <strong className="icon-link address-svg">Address</strong>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, corporis.</p>
               </div>
               
               <div className="contact-group">
-                  <strong className="icon-link">Mobile</strong>
+                  <strong className="icon-link call-svg">Mobile</strong>
                   <p>(+20) 220 123 4567, +91 12345 67890</p>
               </div>
 
+             
               <div className="contact-group">
-                  <strong className="icon-link">Phone</strong>
-                  <p>(+20) 220 123 4567, +91 12345 67890</p>
-              </div>
-              
-              <div className="contact-group">
-                  <strong className="icon-link">Email</strong>
+                  <strong className="icon-link mail-svg">Email</strong>
                   <p>testermail@mail.com, contacttest@mail.com</p>
               </div>
 
               <div className="contact-group">
-                  <strong className="icon-link">Website</strong>
-                  <p>http://locahost:8080</p>
+                  <strong className="icon-link website-svg">Website</strong>
+                  <p><a href="https://tayyabv011.netlify.app/">https://tayyabv011.netlify.app/</a></p>
               </div>
 
             </div>
 
             <div className="map">
-                <iframe id='map-iframe' style={{ border: 0 }} width="600" height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.0080692193424!2d80.29172299999996!3d13.098675000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f446a1c3187%3A0x298011b0b0d14d47!2sTransvelo!5e0!3m2!1sen!2sin!4v1412844527190"></iframe>
+                <iframe id='map-iframe' style={{ border: 0 }} width="600" height="450" src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d120700.30789369083!2d72.78321644199156!3d19.024805157156056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d18.9546445!2d72.8386586!4m5!1s0x3be7c994afbc6de9%3A0xd36760e4a1a77177!2sjhu%20chowpatty!3m2!1d19.0974187!2d72.8264476!5e0!3m2!1sen!2sin!4v1654586222870!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
 

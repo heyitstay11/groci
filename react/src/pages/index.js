@@ -12,3 +12,4 @@ export { default as Checkout } from './Checkout'
 export { default as SingleOrder } from './SingleOrder'
 export { default as Orders } from './Orders'
 export { default as SingleProduct } from './SingleProduct'
+export { default as SearchResults } from './SearchResults';

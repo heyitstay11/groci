@@ -28,7 +28,10 @@ const Checkout = () => {
     }
 
     const handleOrder = () => {
-        if(order.name && products.length){
+        if(products.length === 0){
+            return toast.error('Your Cart is empty');
+        }
+        if(order.name){
             fetch(`${import.meta.env.VITE_SERVER_URL}/order/create`, {
                 method: 'POST',
                 body: JSON.stringify({...order, payment_method: 'cash_on_delivery'}),
@@ -74,6 +77,14 @@ const Checkout = () => {
                                             }
                                         } catch (error) {
                                             console.log(error);
+                                        }
+                                    },
+                                    modal: {
+                                        ondismiss: function(){
+                                            toast.success('Payment set to cash on delivery')
+                                            dispatch(reset());
+                                            deleteCart({ token })
+                                            .then(data => navigate(`/orders/${id}`));
                                         }
                                     }
                                 };
@@ -135,7 +146,7 @@ const Checkout = () => {
                     <thead>
                         <tr>
                             <th>Product</th>
-                            <th>Subtotal ($)</th>
+                            <th>Subtotal (₹)</th>
                         </tr>
                     </thead>
                     <tbody>

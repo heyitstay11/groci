@@ -33,12 +33,13 @@ const ProductSchema = new mongoose.Schema({
     measurement: {
         name: {
             type: String,
-            default: 'kg'
+            default: '1kg'
         },
         desc: {
             type: String
         }
     }
 }, { timestamps: true });
+
 
 export default mongoose.model("Product", ProductSchema);

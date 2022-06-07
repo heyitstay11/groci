@@ -4,6 +4,10 @@ import Product from '../models/product.js';
 import User from '../models/user.js';
 import { requireAuth } from '../middlewares/jwt.js';
 
+const escapeRegex = (text) => {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
+
 // get all products
 router.get('/', async (req, res) => {
     try {
@@ -13,6 +17,18 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error });
     }
 });
+
+// search product
+router.get('/search/:title', async (req, res) => {
+    const { title } = req.params;
+    const regex = new RegExp(escapeRegex(title), 'gi');
+    try {
+        const products = await Product.find({title: regex}).limit(10);
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+})
 
 // get product by id
 router.get('/:id', async (req, res) => {
@@ -77,7 +93,8 @@ router.put('/:id', requireAuth, async (req, res) => {
             return res.status(400).json({ error: "No such product exists"})
         }
 
-        product = await Product.findByIdAndUpdate(productId, { title, 
+        product = await Product.findByIdAndUpdate(productId, { 
+            title, 
             desc, 
             sale, 
             price, 

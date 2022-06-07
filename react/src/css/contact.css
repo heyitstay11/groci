@@ -15,9 +15,6 @@
     margin-bottom: 1.4em;
 }
 
-.contact-group > .icon-link::before {
-    filter: invert(180);
-}
 .contact-group + .contact-group {
     margin-top: .85em;
 }

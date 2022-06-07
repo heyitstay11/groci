@@ -56,7 +56,7 @@ return (
                 <input className="price-range" step="20" value={filterPrice} onChange={(e) => setFilterPrice(e.target.value)} type="range" name="price" id="filter-price" min="0" max={maxPrice - 1 || 0}/>
                 <div className="btn-container">
                     <button>Filter</button>
-                    <span>Price ${filterPrice} - ${maxPrice}</span>
+                    <span>Price ₹{filterPrice} - ₹{maxPrice}</span>
                 </div>  
 
             </form>

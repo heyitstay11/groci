@@ -42,7 +42,7 @@ const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 
             </div>
             <div className="title">{title}</div>
             <div className="stock"> <span className="tick-icon"><img className="tick-icon" src="../imgs/tick.svg" alt="" /></span>In Stock <span className="available">1kg</span></div>
-            <div className="price"><s>${price}</s> <strong>${salePrice}</strong></div>
+            <div className="price"><s>₹{price}</s> <strong>₹{salePrice}</strong></div>
             <div className="counter">
                 <button className="decrement" onClick={decrement}>-</button>
                 <input value={count} onChange={handleChange} type="number" min='1' max={quantity} />

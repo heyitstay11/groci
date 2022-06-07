@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../redux/services/authSlice'
 import { useEffect } from "react";
@@ -8,18 +8,15 @@ import { setCart } from "../redux/services/cartSlice";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-    const [isNavOpen, setNavOpen] = useState(false);
-    const [locationSelect, setLocationSelect] = useState(true);
     const { token } = useSelector((state) => ({...state.auth}));
     const { quantity } = useSelector((state) => ({...state.cart}));
     const { data: cartData } = useCartQuery(token);
     const [createCart] = useCreateCartMutation();
     const dispatch = useDispatch();
-    
-    const handleLogout = () => {
-        toast.success('Logged out succesfully');
-        dispatch(logoutUser());
-    }
+    const navigate = useNavigate();
+    const [isNavOpen, setNavOpen] = useState(false);
+    const [locationSelect, setLocationSelect] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         if(!cartData){
@@ -30,6 +27,19 @@ const Navbar = () => {
             dispatch(setCart(cartData));
         }
     }, [cartData]);
+
+    const handleLogout = () => {
+        toast.success('Logged out succesfully');
+        dispatch(logoutUser());
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if(!searchTerm.trim()) {
+            return toast.error('Fill the search input');
+        } 
+        navigate(`/search/${searchTerm.trim()}`)
+    }
 
     return (
         <header role="banner">
@@ -66,9 +76,9 @@ const Navbar = () => {
             <div className="search-bar-content wrapper">
                 <a href="#!" className="brand-img"><img src="../imgs/cart.svg" alt="" /></a>
             
-                <form className="search-form">
+                <form className="search-form" onSubmit={handleSearch}>
                     <label htmlFor="product-search" className="visually-hidden" >Search Products</label>
-                    <input type="text" name="product-search" placeholder="Enter a keyword" />
+                    <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value) } type="text" name="product-search" placeholder="Enter a keyword" />
                     <button type="submit">Search</button>
                 </form>
     
