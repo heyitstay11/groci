@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import Order from '../models/order.js';
-const router = Router();
+import User from '../models/user.js';
+import Product from '../models/product.js';
 import { requireAuth } from '../middlewares/jwt.js';
+const router = Router();
 
 
 router.use(requireAuth)
@@ -17,10 +19,17 @@ router.get('/', async (req, res) => {
     }
 });
 
+// get order by Id
 router.get('/:id', async (req, res) => {
+    const { id: userId } = req.user;
     try {
-        const { id } = req.params;
-        const order = await Order.findById(id);
+        const { id: orderId } = req.params;
+        const order = await Order.findById(orderId);
+        const user = await User.findById(userId);
+        
+        if(order.customer.toString() !== user._id.toString() && !user.isAdmin){
+            return res.status(401).json({ error: "You are not authorised for this action"});
+        }
         res.json(order);
     } catch (error) {
         res.status(500).json({ error })
@@ -33,15 +42,39 @@ router.post('/create', async (req, res) => {
     const { address, name, phone, total_price, payment_method, products} = req.body;
     try {
         const order = await Order.create({ customer: id, address, name, phone, total_price, payment_method, products });
+        const updateProducts = order.products.map(async (item) => {
+            const product = await Product.findById(item._id);
+            product.quantity = product.quantity - item.count;
+            return await product.save();
+        });
+        Promise.all([...updateProducts]);
         res.json({id: order._id});
     }catch (error) { 
-        res.status(500).json({ error })
+        res.status(500).json({ error });
     }
 });
 
 // edit order
 router.put('/:id', async (req, res) => {
-
+    const { id: userId } = req.user;
+    const { id: orderId } = req.params;
+    const { status } = req.body;
+    try {
+        const user = await User.findById(userId);
+        if(!user.isAdmin){
+            return res.status(401).json({ error: "You are not authorised for this action"});
+        }
+        
+        const order = await Order.findById(orderId);
+        if(!order){
+            return res.status(400).json({ error: "No such Order exists"})
+        }
+        order.status = status;
+        await order.save();
+        res.json({ id: order._id });
+    } catch (error) {
+        res.status(500).json({ error })
+    }
 });
 
 // delete order
