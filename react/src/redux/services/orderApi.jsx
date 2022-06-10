@@ -14,6 +14,15 @@ export const orderApi = createApi({
             }),
             providesTags: ['Order']
         }),
+        pendingOrders: builder.query({
+            query: (token) => ({
+                url: '/order/pending',
+                headers: {
+                    'x-auth-token': token
+                }
+            }),
+            providesTags: ['Order']
+        }),
         order: builder.query({
             query: ({token, id}) => ({
                 url: `/order/${id}`,
@@ -26,4 +35,4 @@ export const orderApi = createApi({
     }),
 });
 
-export const {  useOrderQuery, useAllOrdersQuery } = orderApi;
+export const {  useOrderQuery, useAllOrdersQuery, usePendingOrdersQuery } = orderApi;

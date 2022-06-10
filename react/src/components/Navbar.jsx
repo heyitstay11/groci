@@ -8,7 +8,7 @@ import { setCart } from "../redux/services/cartSlice";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-    const { token } = useSelector((state) => ({...state.auth}));
+    const { token, isAdmin } = useSelector((state) => ({...state.auth}));
     const { quantity } = useSelector((state) => ({...state.cart}));
     const { data: cartData } = useCartQuery(token);
     const [createCart] = useCreateCartMutation();
@@ -62,7 +62,12 @@ const Navbar = () => {
                         </select>      
                     </span>
                     {token ? 
+                    <>
                      <button tabIndex={0} onClick={handleLogout} style={{ cursor: 'pointer', background: 'transparent', color: 'white', border: 'none'}} className="lock-svg icon-link" >Log Out</button>
+                     {isAdmin ? (
+                         <Link to='/admin'>Admin</Link>
+                     ) : null}
+                    </>
                     :
                     <>
                         <Link to="/register" className="lock-svg icon-link" >Sign Up</Link>

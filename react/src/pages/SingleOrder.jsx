@@ -11,7 +11,7 @@ const SingleOrder = () => {
         loading: isLoading,
         indicator: <Audio width="50" />
     })
-
+    
     return (
         <main>
             <div className="wrapper single-order"  >

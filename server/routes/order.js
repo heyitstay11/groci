@@ -19,6 +19,22 @@ router.get('/', async (req, res) => {
     }
 });
 
+// get pending orders (Admin Route)
+router.get('/pending', async (req, res) => {
+    const { id: userId } = req.user;
+    try {
+        const user = await User.findById(userId);
+        if(!user.isAdmin){
+            return res.status(401).json({ error: "You are not authorised for this action"});
+        }
+        const orders = await Order.find().populate('customer', 'username email');
+        res.json(orders);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error});
+    }
+})
+
 // get order by Id
 router.get('/:id', async (req, res) => {
     const { id: userId } = req.user;
@@ -32,7 +48,7 @@ router.get('/:id', async (req, res) => {
         }
         res.json(order);
     } catch (error) {
-        res.status(500).json({ error })
+        res.status(500).json({ error });
     }
 });
 

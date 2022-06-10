@@ -21,6 +21,7 @@ const EditProduct = lazy(() => import('./pages/EditProduct'));
 const SingleOrder = lazy(() => import('./pages/SingleOrder'));
 const SingleProduct = lazy(() => import('./pages/SingleProduct'));
 const Checkout = lazy(() => import('./pages/Checkout'));
+const Admin = lazy(() => import('./pages/Admin'));
 
 
 
@@ -46,6 +47,7 @@ const App = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/about' element={<About />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/admin' element={<PrivateRoute><Admin /></PrivateRoute>} />
           <Route path='/checkout' element={<PrivateRoute><Checkout /></PrivateRoute>} />
           <Route path='/products' element={<Products />}/>
           <Route path='/products/:id' element={<SingleProduct />} />
