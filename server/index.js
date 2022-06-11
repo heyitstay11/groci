@@ -1,13 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-dotenv.config()
+dotenv.config();
 import connectDB from './middlewares/connectDB.js';
-import authRouter from './routes/auth.js';
-import productRouter from './routes/product.js';
-import cartRouter from './routes/cart.js';
-import orderRouter from './routes/order.js';
-import paymentRouter from './routes/payment.js';
+import { 
+    authRouter, 
+    cartRouter, 
+    productRouter, 
+    orderRouter, 
+    paymentRouter } from './routes/index.js';
 
 const PORT = process.env.PORT || 5000;
 
@@ -19,7 +20,7 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.send('Hello');
+    res.send('Hello, Groci server');
 });
 
 app.use('/auth', authRouter);
