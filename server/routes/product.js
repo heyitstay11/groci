@@ -3,6 +3,10 @@ const router = Router();
 import Product from '../models/product.js';
 import User from '../models/user.js';
 import { requireAuth } from '../middlewares/jwt.js';
+import multer from 'multer';
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage }).single('img');
 
 const escapeRegex = (text) => {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
@@ -42,7 +46,9 @@ router.get('/:id', async (req, res) => {
 });
 
 // create product
-router.post('/create', requireAuth , async (req, res) => {
+router.post('/create', upload, async (req, res) => {
+    console.log(req.body.title);
+    return res.end();
     const { id } = req.user;
     const { title, 
             desc, 
