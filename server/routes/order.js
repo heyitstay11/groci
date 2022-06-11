@@ -6,7 +6,7 @@ import { requireAuth } from '../middlewares/jwt.js';
 const router = Router();
 
 
-router.use(requireAuth)
+router.use(requireAuth);
 
 // get all order by user id
 router.get('/', async (req, res) => {
@@ -27,7 +27,7 @@ router.get('/pending', async (req, res) => {
         if(!user.isAdmin){
             return res.status(401).json({ error: "You are not authorised for this action"});
         }
-        const orders = await Order.find().populate('customer', 'username email');
+        const orders = await Order.find({ status: { $ne: 'delivered' }}).populate('customer', 'username email');
         res.json(orders);
     } catch (error) {
         console.log(error);
