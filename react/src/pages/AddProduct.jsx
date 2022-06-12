@@ -2,20 +2,37 @@ import '../css/addproduct.css';
 import { useForm } from 'react-hook-form';
 import { useAddProductMutation } from '../redux/services/productApi';
 import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [addProduct] = useAddProductMutation();
     const { token } = useSelector((state) => ({...state.auth}));
-    
+    const [imgFile, setImageFile] = useState(null);
+    const [preview, setPreview] = useState(null);
+
     const onSubmit = (data) => {
-        addProduct({product: data, token })
-        .then(res => {
-            if(res.data.id){
-                navigate(`/products/${res.data.id}`)   
-            }
-        }).catch(err => console.log(err));
+        console.log(data);
+        console.log(imgFile);
+        // addProduct({product: data, token })
+        // .then(res => {
+        //     if(res.data.id){
+        //         navigate(`/products/${res.data.id}`)   
+        //     }
+        // }).catch(err => console.log(err));
     }
+
+    useEffect(() => {
+        if(!imgFile){
+            setPreview(null);
+            return;
+        }
+
+        const objectURL = window.URL.createObjectURL(imgFile);
+        setPreview(objectURL);
+
+        return () => window.URL.revokeObjectURL(objectURL);
+    }, [imgFile]);
 
     return (
         <main>
@@ -34,8 +51,18 @@ const AddProduct = () => {
                        <input {...register('title', { required: true })} required type="text" id="p_name" placeholder="eg: Nagpur Oranges (1kg)" />
                        <label htmlFor="p_desc">Description</label>
                        <input {...register('desc', { required: true })} required type="text" id="p_desc" placeholder="Fresh and organic ..." />
-                       <label htmlFor="p_img">Product Image (Link)</label>
-                       <input {...register('img', { required: true })} required type="url" id="p_img" placeholder="https://imgur.com/abcdxyz" />
+                       <label htmlFor="p_img">Product Image (Link) or upload a file</label>
+                       <input {...register('img')} type="url" id="p_img" placeholder="https://imgur.com/abcdxyz" />
+                       <div className="">
+                          <label htmlFor="img-file">Upload Product Image: </label> 
+                          <input type="file" onChange={e => setImageFile(e.target.files[0])} multiple={false} accept="image/png, image/jpeg" />
+                          {imgFile ?
+                          <>
+                            <button type='button' onClick={() => setImageFile(null)}>Cancel File</button>
+                            <img src={preview} alt="" style={{ marginTop: '1em', marginLeft: '1em' }} height={200} />
+                          </> : null
+                          }
+                       </div>
                        <label htmlFor="p_price">Price (inr)</label>
                        <input {...register('price', { required: true, min: 1 })} required type="number" min={0} id="p_price" placeholder="70" />
                        <label htmlFor="p_quantity">Total Quantity</label>
