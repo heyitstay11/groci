@@ -21,7 +21,6 @@ const cloudinaryConfig = (req, res, next) => {
     next();
 }
 
-
 // set datauri
 const dUri = new Datauri();
 const datauri = file => {
@@ -32,6 +31,7 @@ const datauri = file => {
 const storage = multer.memoryStorage();
 const upload = multer({ storage }).single('img');
 
+// prevent regex crash
 const escapeRegex = (text) => {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
@@ -82,43 +82,42 @@ router.post('/create', requireAuth, upload, async (req, res) => {
             quantity, 
             measurement_name : m_name, measurement_desc: m_desc } = req.body;
     let image = '';
-        res.end();
-    // try {
-    //     const user = await User.findById(id);
-    //     if(!user.isAdmin){
-    //         return res.status(401).json({ error: "You are not authorised for this action"});
-    //     }
+    try {
+        const user = await User.findById(id);
+        if(!user.isAdmin){
+            return res.status(401).json({ error: "You are not authorised for this action"});
+        }
 
-    //     let product = await Product.findOne({ title });
-    //     if(product){
-    //         return res.status(400).json({ error: "Product with this name already exists "})
-    //     }
+        let product = await Product.findOne({ title });
+        if(product){
+            return res.status(400).json({ error: "Product with this name already exists "})
+        }
 
-    //     if(req.file){
-    //         const file = datauri(req.file).content;
-    //         const cloudinaryRes = await uploader.upload(file);
-    //         image = cloudinaryRes.secure_url;
-    //     }else{
-    //         image = req.body.img;
-    //     }
-    //     product = await Product.create({ title, desc, sale, price, img: image, quantity, measurement: { name: m_name, desc: m_desc }});
-    //     res.json({ id: product._id});
-    // }catch (error) {
-    //     res.status(500).json(error)
-    // }
+        if(req.file){
+            const file = datauri(req.file).content;
+            const cloudinaryRes = await uploader.upload(file);
+            image = cloudinaryRes.secure_url;
+        }else{
+            image = req.body.img;
+        }
+        product = await Product.create({ title, desc, sale, price, img: image, quantity, measurement: { name: m_name, desc: m_desc }});
+        res.json({ id: product._id});
+    }catch (error) {
+        res.status(500).json(error)
+    }
 });
 
 // edit product
-router.put('/:id', requireAuth, async (req, res) => {
+router.put('/:id', requireAuth, upload, async (req, res) => {
     const { id: userId } = req.user;
     const { id: productId } = req.params;
     const { title, 
             desc, 
             sale, 
             price, 
-            img, 
             quantity, 
             m_name,  m_desc } = req.body;
+    let image = '';
     try {
         const user = await User.findById(userId);
         if(!user.isAdmin){
@@ -126,23 +125,24 @@ router.put('/:id', requireAuth, async (req, res) => {
         }
 
         let product = await Product.findById(productId);
-
         if(!product){
             return res.status(400).json({ error: "No such product exists"})
         }
 
-        product = await Product.findByIdAndUpdate(productId, { 
-            title, 
-            desc, 
-            sale, 
-            price, 
-            img, 
-            quantity, 
-            m_name,  m_desc }, { new: true });
+        if(req.file){
+            const file = datauri(req.file).content;
+            const cloudinaryRes = await uploader.upload(file);
+            image = cloudinaryRes.secure_url;
+        }else{
+            image = req.body.img;
+        }
+
+        product = await Product.findByIdAndUpdate(productId, 
+               { title, desc, sale, price, img: image, quantity, m_name,  m_desc }, { new: true });
             
         res.json({ id: product._id});
     } catch (error) {
-        res.status(500).json({ error })
+        res.status(500).json(error);
     }
 });
 

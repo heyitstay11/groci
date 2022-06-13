@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useAddProductMutation } from '../redux/services/productApi';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -10,16 +11,26 @@ const AddProduct = () => {
     const { token } = useSelector((state) => ({...state.auth}));
     const [imgFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
-        console.log(imgFile);
-        // addProduct({product: data, token })
-        // .then(res => {
-        //     if(res.data.id){
-        //         navigate(`/products/${res.data.id}`)   
-        //     }
-        // }).catch(err => console.log(err));
+        const { title, desc, img, price, quantity, sale, m_name, m_desc } = data;
+        const newProduct = new FormData();
+        newProduct.append('title', title);
+        newProduct.append('desc', desc);
+        newProduct.append('img', imgFile || img);
+        newProduct.append('price', price);
+        newProduct.append('quantity', quantity);
+        newProduct.append('sale', sale);
+        newProduct.append('m_name', m_name);
+        newProduct.append('m_desc', m_desc);
+        addProduct({ product: newProduct, token })
+        .then((res) => {
+            console.log(res);
+            if(res.data.id){
+                navigate(`/products/${res.data.id}`)   
+            }
+        }).catch(err => console.log(err));
     }
 
     useEffect(() => {
