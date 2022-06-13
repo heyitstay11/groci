@@ -37,6 +37,8 @@ const SingleProduct = () => {
                         <s><span className="price">${data.price}</span></s>
                         <span className="saleprice">&nbsp;${salePrice}</span>
                     </div>
+
+                    <p>Quantity available: {quantity}</p>
                     <div className="btn-container">
                         <input type="number"  value={count} onChange={handleChange} />
                         <button className="nice-btn" onClick={handleAddToCart}>Add To Cart</button>

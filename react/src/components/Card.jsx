@@ -4,7 +4,7 @@ import { addProduct } from '../redux/services/cartSlice';
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
-const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 1, price = 1 }) => {
+const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 0, price = 1 }) => {
     const dispatch = useDispatch();
     const [count, setCount] = useState(1);
     const salePrice =  price - Number((price * (sale / 100)).toFixed(2));
@@ -22,8 +22,8 @@ const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 
 
     const handleAddToCart = () => {
         if(!count) return;
+        if(!quantity) return;
         if(count > quantity){
-            console.log('here');
             toast.error(`There are only ${quantity} in stock`);
             return;
         }
@@ -41,7 +41,7 @@ const Card = ({ sale = 0, img = '', _id, desc, title = 'Demo Title', quantity = 
                 </Link>
             </div>
             <div className="title">{title}</div>
-            <div className="stock"> <span className="tick-icon"><img className="tick-icon" src="../imgs/tick.svg" alt="" /></span>In Stock <span className="available">1kg</span></div>
+            <div className="stock"> <span className="tick-icon"><img className="tick-icon" src={quantity ?  "../imgs/tick.svg" : "../imgs/red-cross.svg"} alt="" /></span>{quantity ? 'In Stock ' : 'Out of Stock '}<span className="available">1kg</span></div>
             <div className="price"><s>₹{price}</s> <strong>₹{salePrice}</strong></div>
             <div className="counter">
                 <button className="decrement" onClick={decrement}>-</button>
