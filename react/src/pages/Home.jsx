@@ -86,7 +86,7 @@ const Home = () => {
                             <img src="../imgs/cart.svg" alt="" />
                         </div>
                         <div className="desc">
-                            <p className="title">Great Delas</p>
+                            <p className="title">Great Deals</p>
                             <p className="sub-title">Lorem ipsum dolor sit amet.</p>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ const Home = () => {
                             <img src="../imgs/cart.svg" alt="" />
                         </div>
                         <div className="desc">
-                            <p className="title">Great Delas</p>
+                            <p className="title">Great Deals</p>
                             <p className="sub-title">Lorem ipsum dolor sit amet.</p>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ const Home = () => {
                             <img src="../imgs/cart.svg" alt="" />
                         </div>
                         <div className="desc">
-                            <p className="title">Great Delas</p>
+                            <p className="title">Great Deals</p>
                             <p className="sub-title">Lorem ipsum dolor sit amet.</p>
                         </div>
                     </div>

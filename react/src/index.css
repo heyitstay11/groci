@@ -430,10 +430,6 @@ nav{
     margin: 1em;
 }
 
-.product-grid > *{
-    margin: 0 auto;
-}
-
 .card{
     width: 100%;
     padding: .5em;

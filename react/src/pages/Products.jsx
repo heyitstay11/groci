@@ -80,8 +80,8 @@ return (
 
                 <div className="product-view-controls">
                     <div className="view-btn-container">
-                        <button>Grid</button>
-                        <button>List</button>
+                        {/* <button>Grid</button>
+                        <button>List</button> */}
                     </div>
 
                     <div className="sort-controls">
@@ -106,7 +106,7 @@ return (
                 </section>
             )   :
             (
-                <div className="product-grid">
+                <div className={`product-grid`}>
                 {filteredData?.map(item => {
                     const { sale, img, _id, title, quantity, price, desc } = item;
 

@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
 
         <div className="item">
-            <div className="title">Categoires</div>
+            <div className="title">Categories</div>
             <ul className="list">
                 <li>Lorem</li>
                 <li>Ipsum</li>
